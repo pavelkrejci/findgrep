@@ -29,3 +29,5 @@ $NEWLINE_BEFORE_PROMPT='yes'
   Write-Host "${esc}]0;PS> $([environment]::username)@$([system.environment]::MachineName): $(Get-Location)${bell}" -NoNewLine
   return " "
 }
+
+Set-PSReadlineOption -EditMode Emacs
