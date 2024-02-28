@@ -55,4 +55,11 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -laF'
 alias '..'='cd ..'
+#WordPress scan
 alias wpscan_mytoken='wpscan --api-token KaJMBG9Ityv8eIprRoUKTfofioIAwjVmg90q0RXMtdY'
+#git
+alias gs="git status"
+alias gp="git pull"
+alias gl="git log"
+alias gd="git diff"
+alias ga="git add"
