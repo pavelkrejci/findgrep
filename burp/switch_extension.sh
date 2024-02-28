@@ -3,8 +3,7 @@
 BN=`basename $0`
 
 usage() {
-	echo "Usage: $BN [-c <Burp_user_config.json>] <extension_name> [true|false]"
-	echo "- default config is /home/atos/.BurpSuite/UserConfigPro.json"
+	echo "Usage: $BN -c <Burp_user_config.json> <extension_name> [true|false]"
 	echo "- switch the extension attribute \"loaded\" to true|false"
 	echo "- BEWARE: extension name ALL will make it for all"
 	exit 2
@@ -13,7 +12,7 @@ usage() {
 if [ "$#" -lt 2 ] || [ "$#" -gt 4 ]; then usage; fi
 
 # Default values
-CONFIG_FILE="/home/atos/.BurpSuite/UserConfigPro.json"
+CONFIG_FILE=""
 EXTENSION_NAME=""
 STATUS=""
 
