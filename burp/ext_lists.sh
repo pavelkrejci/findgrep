@@ -22,7 +22,7 @@ el["API"]="HTTP Methods Discloser,JS Link Finder,OpenAPI Parser,Filter Options M
 el["ActiveScan"]="Active Scan++,Additional CSRF Checks"
 el["PassiveScan"]="Headers Analyzer,Additional Scanner Checks,Software Version Reporter,Software Vulnerability Scanner"
 el["CSRF"]="CSRF Scanner,CSRF Token Tracker,Additional CSRF Checks"
-el["Authenticate"]="Auth Analyzer,Authentication Token Obtain and Replace,OAUTH Scan,OAuth2 Token Grabber,OAuthv1 Authentication,Session Auth"
+el["Authenticate"]="Auth Analyzer,Authentication Token Obtain and Replace,OAUTH Scan,OAuth2 Token Grabber,Session Auth"
 el["Autorize"]="Autorize"
 el["SSI"]="Backslash Powered Scanner"
 el["SQL"]="NoSQLi Scanner,SQLMap DNS Collaborator,SQLiPy Sqlmap Integration"
@@ -32,6 +32,9 @@ el["CommandInjection"]="Command Injection Attacker,PHP Object Injection Check,PH
 el["FileUpload"]="File Upload Traverser,Upload Scanner"
 el["ResponseIntercept"]="HTTP Mock"
 el["CSRF"]="CSRF Token Tracker,Token Extractor,Additional CSRF Checks,CSRF Scanner"
+el["XSS"]="XSS Cheatsheet,Additional Scanner Checks,Upload Scanner"
+#Warning: Collaborator Everywhere logs hits into event log and console, but Collaborator GUI is empty!!! Switch off to interact with the Collaborator tab manually again.
+el["SSRF"]="Collaborator Everywhere,DNS Analyzer,Upload Scanner"
 
 
 ##################################
