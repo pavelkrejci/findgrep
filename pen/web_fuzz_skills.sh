@@ -3,7 +3,7 @@
 # Define usage function
 usage() {
 	BN=`basename $0`
-    echo "Usage: $BN [-e|--etchosts] [-s|--subdomains] [-v|--vhosts] [-e|--extensions] [-d|--dirs] [-p|--params] [-a|--all] [-fs <size>] [-mc <code>] <IP:PORT> <URL> [<PATH>]"
+    echo "Usage: $BN [-e|--etchosts] [-s|--subdomains] [-v|--vhosts] [-e|--extensions] [-d|--dirs] [-p|--params] [-a|--all] [-fs <size>] [-mc <code>] <IP:PORT> <URL>"
     exit 2
 }
 
@@ -21,7 +21,7 @@ fuzz_subdomains() {
 
 #3 fuzz for vhosts, 
 fuzz_vhosts() {
-	ffuf -ic -w ~/SecLists/Discovery/DNS/subdomains-top1million-20000.txt:FUZZ -u http://$URL:$PORT/ -H "Host: FUZZ.$URL" -fs 985
+	ffuf -ic -w ~/SecLists/Discovery/DNS/subdomains-top1million-20000.txt:FUZZ -u http://$IP:$PORT/ -H "Host: FUZZ.$URL" -fs 985
 }
 
 fuzz_extensions() {
@@ -46,8 +46,8 @@ fuzz_dirs() {
 }
 
 fuzz_params() {
-	ffuf -w ~/SecLists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://$URL:$PORT/$URLPATH?FUZZ=key $FILTER
-	ffuf -w ~/SecLists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://$URL:$PORT/$URLPATH -X POST -d 'FUZZ=key' -H 'Content-Type: application/x-www-form-urlencoded' $FILTER
+	ffuf -w ~/SecLists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://$IP:$PORT/$URL?FUZZ=key $FILTER
+	ffuf -w ~/SecLists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://$IP:$PORT/$URL -X POST -d 'FUZZ=key' -H 'Content-Type: application/x-www-form-urlencoded' $FILTER
 }
 
 #####################################
@@ -103,8 +103,6 @@ while [[ $# -gt 0 ]]; do
                 PORT="$(echo $1 | cut -d':' -f2)"
 			elif [[ -z $URL ]]; then
 				URL="$1"
-			elif [[ -z $URLPATH ]]; then
-				URLPATH="$1"
             else
                 echo "Unexpected argument: $1"
                 usage
@@ -119,6 +117,9 @@ if [[ -z $IP || -z $PORT || -z $URL ]]; then
     echo "Error: IP:PORT and URL are required."
     usage
 fi
+
+# Display IP:PORT parameters
+echo "IP:$IP PORT:$PORT URL:$URL"
 
 if [[ $ETCHOSTS ]]; then
     echo "Set entry to /etc/hosts: $IP $URL"
@@ -161,8 +162,6 @@ if [[ $ALL ]]; then
 	fuzz_params
 fi
 
-# Display IP:PORT parameters
-echo "IP:$IP PORT:$PORT URL:$URL PATH:$URLPATH"
 
 exit 0
 
