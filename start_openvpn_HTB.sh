@@ -1,3 +1,3 @@
 #!/bin/bash
 #
-sudo openvpn --config ~/bin/pen/HTB-academy-regular.ovpn
+sudo openvpn --config ~/HTB-academy-regular.ovpn
