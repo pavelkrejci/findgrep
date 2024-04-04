@@ -3,23 +3,36 @@
 #stores first arugment (secret) into shared memory temporary file and spawns the second argument with this file
 #then deletes the file in background and dies, in order to hide the secret from proc list and file system
 
+#debugging
+#set -x
+#exec &>/tmp/cmdhide.log
 
-# Check if both arguments are provided
-if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <data> <command>"
+# Check if at least 2 arguments are provided
+if [ "$#" -le 1 ]; then
+    echo "Usage: $0 <data1> <data2> ... <command>"
     exit 1
 fi
 
-#debugging
-#set -x
-#exec &>/home/atos/bin/cmdhide.log
 
-# Store the first argument in a temporary file in /dev/shm
-temp_file=$(mktemp -p /dev/shm)
-echo "$1" > "$temp_file"
+# store the first arguments in a temporary file in /dev/shm
+declare -a temp_files
+# Loop through all arguments except the last one
+for ((i = 1; i < $#; i++)); do
+	temp_file=$(mktemp -p /dev/shm)
+	echo -e "${!i}" > $temp_file
+	temp_files+=("$temp_file")
+done
+
+CMD="${!#}"
+# Loop through the temp files and replace placeholders in the string
+for ((i = 0; i < ${#temp_files[@]}; i++)); do
+    placeholder="PLACEHOLDER$((i+1))"
+    replacement="${temp_files[$i]}"
+    CMD=${CMD//$placeholder/$replacement}
+done
 
 # Run the command with the temporary file as argument
-/bin/bash -c "$2 $temp_file" &
+/bin/bash -c "$CMD" &
 
 # Save the PID of the background process
 cmd_pid=$!
@@ -27,7 +40,9 @@ cmd_pid=$!
 # Delete the temporary file in parallel
 {
 	sleep 2
-    rm -f "$temp_file"
+	for ((i = 0; i < ${#temp_files[@]}; i++)); do
+		rm -f "${temp_files[$i]}"
+	done
 } &
 
 #die and disown the child
