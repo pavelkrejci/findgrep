@@ -15,11 +15,16 @@ if [ ! -r "$your_capture_file" ]; then
 	usage
 fi
 
-start_time=$(date -d "$(tcpdump -r $your_capture_file -n -tttt $filter 2>/dev/null | head -1 | awk '{print $1,$2}')" +%s)
-end_time=$(date -d "$(tcpdump -r $your_capture_file -n -tttt $filter 2>/dev/null | tail -1 | awk '{print $1,$2}')" +%s)
-duration=$(echo "$end_time - $start_time" | bc)
+if [ -x "/usr/bin/capinfos" ]; then
+	/usr/bin/capinfos $your_capture_file | grep -E "Number of packets:|Capture duration:|Data byte rate:|Average packet size:|Average packet rate:"
+else
 
-#echo $start_time, $end_time, $duration
-num=$(tcpdump -r $your_capture_file -n $filter 2>/dev/null | wc -l)
-rate=$(echo "$num / $duration" | bc)
-echo "Total: $num packets per $duration seconds = $rate"
+	start_time=$(date -d "$(tcpdump -r $your_capture_file -n -tttt $filter 2>/dev/null | head -1 | awk '{print $1,$2}')" +%s)
+	end_time=$(date -d "$(tcpdump -r $your_capture_file -n -tttt $filter 2>/dev/null | tail -1 | awk '{print $1,$2}')" +%s)
+	duration=$(echo "$end_time - $start_time" | bc)
+
+	#echo $start_time, $end_time, $duration
+	num=$(tcpdump -r $your_capture_file -n $filter 2>/dev/null | wc -l)
+	rate=$(echo "$num / $duration" | bc)
+	echo "Total: $num packets per $duration seconds = $rate"
+fi
