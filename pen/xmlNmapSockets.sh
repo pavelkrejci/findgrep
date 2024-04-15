@@ -25,7 +25,6 @@ fixXML() {
 # OPTIONS
 ############################################
 MODE="i"
-SORT=0
 while getopts "ics" opt; do
 	case "$opt" in
 		i)
