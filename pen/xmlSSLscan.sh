@@ -6,12 +6,12 @@ usage() {
 	echo "$1"
 	echo "Usage: $BN <options> <SSL scan xml output file>"
 	echo "<options>:"
-	echo "-c = IP, DNS names as CSV format"
+	echo "-c = IP, DNS names as CSV format, DEFAULT"
+	echo "-t = TLS and ciphers"
 	echo "-s = sort IP addresses"
 	exit 2
 }
 
-#TODO needed or not?
 fixXML() {
 	if grep -q -l -r "</document>" "$1"; then
 		cat "$1"
@@ -20,17 +20,27 @@ fixXML() {
 	fi
 }
 
+dedupDNS() {
+	while read line; do
+		echo "$line" | sed 's/,.*$/,/g' | tr -d '\n'
+		echo "$line" | sed 's/[DNS:| +]//g' | sed 's/,/\n/g' | tail +2 | sort | uniq | tr '\n' ',' | sed 's/,$/\n/'
+	done
+}
+
 ############################################
 # OPTIONS
 ############################################
 MODE="c"
-while getopts "cs" opt; do
+while getopts "cts" opt; do
 	case "$opt" in
 		c)
 			MODE="c"
 			;;
+		t)
+			MODE="t"
+			;;
 		s)
-			MODE="s"
+			SORT="| sort -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n"
 			;;
         \?)
             echo "Error: Invalid option: -$OPTARG" >&2
@@ -57,10 +67,11 @@ FILE="$1"
 ############################################
 
 if [ "$MODE" == "c" ]; then
-	#echo "List of live IPs:"
-	fixXML $FILE | $XMLS sel --recover -T -t -m "//ssltest[certificates/certificate/subject]" -n -v "@host" -m "certificates/certificate" -o "," -v "subject" -o "," -v "altnames"
-elif [ "$MODE" == "s" ]; then
-	fixXML $FILE | $XMLS sel --recover -T -t -m "//ssltest[certificates/certificate/subject]" -n -v "@host" -m "certificates/certificate" -o "," -v "subject" -o "," -v "altnames" | sort -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n 
+	CMD="fixXML $FILE | $XMLS sel --recover -T -t -m '//ssltest[certificates/certificate/subject]' -n -v '@host' -m 'certificates/certificate' -o ',' -v 'subject' -o ',' -v 'altnames' | dedupDNS $SORT"
+	eval $CMD
+elif [ "$MODE" == "t" ]; then
+	CMD="fixXML $FILE | $XMLS sel --recover -T -t -m '//ssltest[cipher]' -n -v '@host' -m 'cipher' -o ',' -v '@cipher' $SORT"
+	eval $CMD
 fi
 
 exit 0
