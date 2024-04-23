@@ -10,20 +10,12 @@ usage() {
 	echo "- name resolution for IPv4 address (DNS entry 'A')"
 	echo "<options>:"
 	echo "-s = sort IPs"
+	echo "-l <live IP list> = check if resolved IP is in this list"
 	exit 2
 }
 
-resolveA() {
-	if [ -z "$1" ]; then
-		while read T; do
-			dig +short A $T
-		done 
-	else
-		dig +short A $1
-	fi
-}
-
-digNameServer() {
+#TODO not finished
+digNameServers() {
 	dig +short NS $1 | resolveA |
 	while read nameserver_ip; do
 		nc -z -w 3 $nameserver_ip 53
@@ -44,7 +36,7 @@ digNameServer() {
 # OPTIONS
 ############################################
 MODE=""
-while getopts "sf:" opt; do
+while getopts "sf:l:" opt; do
 	case "$opt" in
 		s)
 			SORT="1"
@@ -53,6 +45,10 @@ while getopts "sf:" opt; do
 			MODE="f"
 			FILE=$OPTARG
 			[ ! -r "$FILE" ] && usage "Error: Cannot read file '$FILE'."
+			;;
+		l)
+			LIVE=$OPTARG
+			[ ! -r "$LIVE" ] && usage "Error: Cannot read file '$LIVE'."
 			;;
         \?)
             echo "Error: Invalid option: -$OPTARG" >&2
@@ -68,19 +64,36 @@ shift $((OPTIND-1))
 
 
 if [ "$MODE" == "f" ]; then
+	TOTAL=$(cat $FILE | wc -l)
+	i=0
 	while read TARGET; do
+		((i++))
+		#trim leading *. from name
+		TARGET="${TARGET/'*.'/}"
+		echo "Target [$i/$TOTAL]: $TARGET" >&2
 		dig +short A $TARGET | onlyIPs | while read IP; do
-			echo $IP,$TARGET
+			if [ -n "$LIVE" ]; then
+				if grep -q -l "\<$IP\>" $LIVE; then
+					echo $IP,true,$TARGET
+				else
+					echo $IP,false,$TARGET
+				fi
+			else
+				echo $IP,$TARGET
+			fi
 		done 
 	done <$FILE | sortIP $SORT
 else
 	TARGET="$1"
+	TARGET="${TARGET/'*.'/}"
 	[ -z "$TARGET" ] && usage "Error: DNS name not specified."
-#	NS=`digNameServer $TARGET`
+	resolveA $TARGET
+
+#	NS=`digNameServers $TARGET`
+#	echo $NS
 #	if [ $? -eq 0 ]; then
 #		dig +short A @$NS $TARGET
 #	fi
-	resolveA $TARGET
 #	nslookup -type=any -query=AXFR $NS $TARGET
 fi
 
