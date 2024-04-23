@@ -45,9 +45,9 @@ FILE2="$2"
 # MAIN
 ############################################
 #TODO header optional
-[ "$MODE" == "h" ] && echo "#,IP,Live,DNS,Cert Type,Self-signed,Expired,Issuer,Not valid before,Not valid after"
+[ "$MODE" == "h" ] && echo "#;IP;Live;DNS;Cert Type;Self-signed;Expired;Issuer;Serial;Not valid before;Not valid after"
 
-join -t, -1 3 -2 1 -a 1 <(sort -t, -k3 $FILE1) <(sort -t, -k1 $FILE2) | awk -F, '{printf "%s,%s,%s,",$2,$3,$1; for (i=4; i<=NF; ++i) printf "%s%s", $i, (i < NF) ? "," : ""; printf "\n"}' | sortIP 1 | uniq | nl -s ',' -w1
+join -t';' -1 3 -2 1 -a 1 <(sort -t';' -k3 $FILE1) <(sort -t';' -k1 $FILE2) | awk -F';' '{printf "%s;%s;%s;",$2,$3,$1; for (i=4; i<=NF; ++i) printf "%s%s", $i, (i < NF) ? ";" : ""; printf "\n"}' | sortIP 1 | uniq | nl -s ';' -w1
 #following does not keep column -f order
 #join -t, -1 3 -2 1 -a 1 <(sort -t, -k3 $FILE1) <(sort -t, -k1 $FILE2) | cut -d, -f2,1
 
