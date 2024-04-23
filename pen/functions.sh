@@ -2,6 +2,7 @@
 
 XMLS="/usr/bin/xmlstarlet"
 EXPCIDR=`dirname $0`/expandCIDR.py
+MYEOL="~MYOWNENDOFLINE~"
 
 fixXML() {
 	if grep -q -l -r "</$1>" "$2"; then
@@ -24,8 +25,11 @@ resolveA() {
 
 dedupDNS() {
 	while read line; do
-		echo "$line" | sed 's/,.*$/,/g' | tr -d '\n'
-		echo "$line" | sed 's/[DNS:| +]//g' | sed 's/,/\n/g' | tail +2 | sort -u | tr '\n' ',' | sed 's/,$/\n/'
+		#omit empty lines
+		if [ -n "$line" ]; then
+			echo "$line" | sed 's/,.*$/,/g' | tr -d '\n'
+			echo "$line" | sed -e 's/DNS://g' -e 's/, */\n/g' | tail +2 | sort -u | tr '\n' ',' | sed 's/,$/\n/'
+		fi
 	done
 }
 
@@ -52,6 +56,10 @@ sortIP() {
 	else
 		sort -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n /dev/stdin
 	fi
+}
+
+emptyLines() {
+	sed '/^$/d' /dev/stdin
 }
 
 chomp() {

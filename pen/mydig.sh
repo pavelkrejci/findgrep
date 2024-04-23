@@ -74,12 +74,12 @@ if [ "$MODE" == "f" ]; then
 		dig +short A $TARGET | onlyIPs | while read IP; do
 			if [ -n "$LIVE" ]; then
 				if grep -q -l "\<$IP\>" $LIVE; then
-					echo $IP,true,$TARGET
+					echo "$IP;true;$TARGET"
 				else
-					echo $IP,false,$TARGET
+					echo "$IP;false;$TARGET"
 				fi
 			else
-				echo $IP,$TARGET
+				echo "$IP;$TARGET"
 			fi
 		done 
 	done <$FILE | sortIP $SORT

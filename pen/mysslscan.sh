@@ -48,13 +48,13 @@ if [ "$MODE" == "f" ]; then
 	[ ! -r "$FILE" ] && usage "Error: Cannot read file '$FILE'."
 	#broken PIPE error (exit code 141) must be ignored, otherwise sslscan fails on non HTTPS ports
 	OUTXML="${FILE%.*}.xml"
+	trap '' PIPE; $SSLSCAN --show-certificate --connect-timeout=5 --ipv4 --verbose $SLEEP --xml=$OUTXML --targets=$FILE
 	echo "Result file output: $OUTXML"
-	trap '' PIPE; $SSLSCAN --ipv4 --verbose $SLEEP --xml=$OUTXML --targets=$FILE
 else
 	[ -z "$1" ] && usage "Error: IP socket not specified."
-	echo "$1"
-	trap '' PIPE; $SSLSCAN --ipv4 --verbose "$1"
-	$SSLSCAN --connect-timeout 5 --openssl-timeout 5 -E -h --warnings off -oA auto $FILE
+	OUTXML="out-$1.xml"
+	trap '' PIPE; $SSLSCAN --show-certificate --connect-timeout=5 --ipv4 --verbose --xml=$OUTXML "$1"
+	echo "Result file output: $OUTXML"
 fi
 
 

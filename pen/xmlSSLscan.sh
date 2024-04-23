@@ -36,7 +36,7 @@ while getopts "cdrts" opt; do
 			MODE="r"
 			;;
 		s)
-			SORT="| sortIP"
+			SORT="1"
 			;;
         \?)
             echo "Error: Invalid option: -$OPTARG" >&2
@@ -63,17 +63,35 @@ FILE="$1"
 ############################################
 
 if [ "$MODE" == "c" ]; then
-	CMD="fixXML document $FILE | $XMLS sel --recover -T -t -m '//ssltest[certificates/certificate/subject]' -n -v '@host' -m 'certificates/certificate' -o ',' -v 'subject' -o ',' -v 'altnames' | dedupDNS $SORT"
-	eval $CMD
+#	CMD="fixXML document $FILE | $XMLS sel --recover -T -t -m '//ssltest[certificates/certificate[@type=\"short\"]/subject]' -v '@host' -m 'certificates/certificate' -o ',' -v 'subject' -o ',' -v 'altnames' -n"
+	fixXML document $FILE | $XMLS tr --recover <(cat <<'EOF'
+<?xml version="1.0"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exslt="http://exslt.org/common" version="1.0" extension-element-prefixes="exslt">
+	<xsl:output omit-xml-declaration="yes" indent="no" method="text"/>
+	<xsl:template match="/">
+		<xsl:for-each select="//ssltest[certificates/certificate/subject]">
+			<xsl:variable name="ip" select="@host"/>
+			<xsl:for-each select="certificates/certificate[@type='short']">
+				<xsl:value-of select="$ip"/>
+				<xsl:text>,</xsl:text>
+				<xsl:value-of select="subject"/>
+				<xsl:for-each select="altnames">
+					<xsl:text>,</xsl:text>
+					<xsl:value-of select="."/>
+				</xsl:for-each>
+				<xsl:text>&#10;</xsl:text>
+			</xsl:for-each>
+		</xsl:for-each>
+	</xsl:template>
+</xsl:stylesheet>
+EOF
+) | dedupDNS | sortIP $SORT
 elif [ "$MODE" == "d" ]; then
-	CMD="fixXML document $FILE | $XMLS sel --recover -T -t -m '//ssltest[certificates/certificate/subject]' -m 'certificates/certificate'  -v 'subject' -n -v 'altnames' -n | parseSAN | matchDNSonly | sort -u | sortTLD1st"
-	eval $CMD
+	fixXML document $FILE | $XMLS sel --recover -T -t -m '//ssltest[certificates/certificate/subject]' -m 'certificates/certificate[@type="short"]'  -v 'subject' -n -v 'altnames' -n | parseSAN | matchDNSonly | sort -u | sortTLD1st
 elif [ "$MODE" == "r" ]; then
-	CMD="fixXML document $FILE | $XMLS sel --recover -T -t -m '//ssltest[certificates/certificate/subject]' -n -v '@host' -m 'certificates/certificate' -o ',' -v 'pk/@type' -v 'pk/@bits' -o ',' -v 'self-signed' -o ',' -v 'expired' -o ',' -v 'issuer' -o ',' -v 'not-valid-before' -o ',' -v 'not-valid-after' $SORT"
-	eval $CMD
+	fixXML document $FILE | $XMLS sel --recover -T -t -m '//ssltest[certificates/certificate/subject]' -n -v '@host' -m 'certificates/certificate[@type="short"]' -o ';' -v 'pk/@type' -v 'pk/@bits' -o ';' -v 'self-signed' -o ';' -v 'expired' -o ';' -m '../../certificates/certificate[@type="full"]' -v 'issuer' -o ';' -v 'serial' -o ';' -v 'not-valid-before' -o ';' -v 'not-valid-after' | emptyLines | sortIP $SORT
 elif [ "$MODE" == "t" ]; then
-	CMD="fixXML document $FILE | $XMLS sel --recover -T -t -m '//ssltest[cipher]' -n -v '@host' -m 'cipher' -o ',' -v '@cipher' $SORT"
-	eval $CMD
+	fixXML document $FILE | $XMLS sel --recover -T -t -m '//ssltest[cipher]' -n -v '@host' -m 'cipher' -o ',' -v '@cipher' sortIP $SORT
 fi
 
 exit 0
