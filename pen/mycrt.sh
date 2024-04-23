@@ -7,10 +7,9 @@
 usage() {
 	BN=`basename $0`
 	echo "$1"
-	echo "Usage: <options> $BN <DNS name> | -f <DNS names list file>"
+	echo "Usage: $BN <DNS name> | -f <DNS names list file>"
 	echo "- passive subdomain enumeration from crt.sh database"
-	echo "<options>:"
-	echo "-r = resolve harvested domains into IPs"
+	echo "- sort output by (sub) domain names, starting with TLD"
 	exit 2
 }
 
@@ -18,11 +17,8 @@ usage() {
 # OPTIONS
 ############################################
 MODE=""
-while getopts "rf:" opt; do
+while getopts "f:" opt; do
 	case "$opt" in
-		r)
-			MODE="r"
-			;;
 		f)
 			MODE="f"
 			FILE=$OPTARG
@@ -42,7 +38,11 @@ shift $((OPTIND-1))
 
 
 if [ "$MODE" == "f" ]; then
+	TOTAL=$(cat $FILE | wc -l)
+	i=0
 	while read TARGET; do
+		((i++))
+		echo "Target [$i/$TOTAL]: $TARGET" >&2
 		curl -s "https://crt.sh/?q=${TARGET}&output=json" | jq -r '.[] | "\(.name_value)\n\(.common_name)"'
 	done <$FILE | sort -u | matchDNSonly | sortTLD1st
 else
@@ -53,5 +53,3 @@ fi
 
 exit 0
 
-
-#curl -s "https://crt.sh/?q=${TARGET}&output=json" | jq -r '.[] | "\(.name_value)\n\(.common_name)"' | sort -u

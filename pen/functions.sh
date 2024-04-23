@@ -11,6 +11,17 @@ fixXML() {
 	fi
 }
 
+resolveA() {
+	#input either from argument or from stdin
+	if [ -z "$1" ]; then
+		while read T; do
+			dig +short $T A
+		done
+	else
+		dig +short $1 A
+	fi
+}
+
 dedupDNS() {
 	while read line; do
 		echo "$line" | sed 's/,.*$/,/g' | tr -d '\n'
@@ -35,6 +46,7 @@ sortTLD1st() {
 }
 
 sortIP() {
+	#argument empty or 0 --> do not sort, otherwise sort
 	if [[ -z "$1" || "$1" -eq 0 ]]; then
 		cat -
 	else

@@ -8,9 +8,10 @@ usage() {
 	echo "$1"
 	echo "Usage: $BN <options> <SSL scan xml output file>"
 	echo "<options>:"
-	echo "-c = IP and DNS names as CSV format, DEFAULT"
+	echo "-c = DEFAULT, Host IP/DNS plus DNS names, CSV format"
 	echo "-d = domain names only, sorted, deduplicated"
 	echo "-t = IP and TLS and ciphers"
+	echo "-r = Host IP/DNS and certificate info"
 	echo "-s = sort IP addresses"
 	exit 2
 }
@@ -20,7 +21,7 @@ usage() {
 # OPTIONS
 ############################################
 MODE="c"
-while getopts "cdts" opt; do
+while getopts "cdrts" opt; do
 	case "$opt" in
 		c)
 			MODE="c"
@@ -30,6 +31,9 @@ while getopts "cdts" opt; do
 			;;
 		t)
 			MODE="t"
+			;;
+		r)
+			MODE="r"
 			;;
 		s)
 			SORT="| sortIP"
@@ -63,6 +67,9 @@ if [ "$MODE" == "c" ]; then
 	eval $CMD
 elif [ "$MODE" == "d" ]; then
 	CMD="fixXML document $FILE | $XMLS sel --recover -T -t -m '//ssltest[certificates/certificate/subject]' -m 'certificates/certificate'  -v 'subject' -n -v 'altnames' -n | parseSAN | matchDNSonly | sort -u | sortTLD1st"
+	eval $CMD
+elif [ "$MODE" == "r" ]; then
+	CMD="fixXML document $FILE | $XMLS sel --recover -T -t -m '//ssltest[certificates/certificate/subject]' -n -v '@host' -m 'certificates/certificate' -o ',' -v 'pk/@type' -v 'pk/@bits' -o ',' -v 'self-signed' -o ',' -v 'expired' -o ',' -v 'issuer' -o ',' -v 'not-valid-before' -o ',' -v 'not-valid-after' $SORT"
 	eval $CMD
 elif [ "$MODE" == "t" ]; then
 	CMD="fixXML document $FILE | $XMLS sel --recover -T -t -m '//ssltest[cipher]' -n -v '@host' -m 'cipher' -o ',' -v '@cipher' $SORT"
