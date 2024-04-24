@@ -25,7 +25,7 @@ done <$CIDR >$temp
 
 while read ip; do
 	ip2=$(echo "$ip" | onlyIPs)
-	grep -q "$ip2" $temp && echo $ip
+	grep -q -l "\<$ip2\>" $temp && echo $ip
 done
 
 rm -f $temp
