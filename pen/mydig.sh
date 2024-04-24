@@ -11,11 +11,16 @@ usage() {
 	echo "<options>:"
 	echo "-s = sort IPs"
 	echo "-l <live IP list> = check if resolved IP is in this list"
+	echo "-n <name server> = use this nameserver"
+	echo "-r <num> = repeat the dig multiple times and collect all unique IPs"
 	exit 2
 }
 
 #TODO not finished
 digNameServers() {
+	dig +short $1 NS
+	return 0
+
 	dig +short NS $1 | resolveA |
 	while read nameserver_ip; do
 		nc -z -w 3 $nameserver_ip 53
@@ -32,11 +37,33 @@ digNameServers() {
 	return 5
 }
 
+digMy() {
+	if [ -n "$REPEAT" ]; then
+		for i in $(seq 1 $REPEAT); do
+			RES=$(dig +time=3 +short A $USENS $1)
+			if [ -z "$RES" ]; then
+				dig +time=3 +short A $1
+			else
+				echo $RES
+			fi
+		done | sort -u
+	else
+		RES=$(dig +time=3 +short A $USENS $1)
+		if [ -z "$RES" ]; then
+			dig +time=3 +short A $1
+		else
+			echo $RES
+		fi
+	fi
+}
+
+
+
 ############################################
 # OPTIONS
 ############################################
 MODE=""
-while getopts "sf:l:" opt; do
+while getopts "sf:l:n:r:" opt; do
 	case "$opt" in
 		s)
 			SORT="1"
@@ -49,6 +76,12 @@ while getopts "sf:l:" opt; do
 		l)
 			LIVE=$OPTARG
 			[ ! -r "$LIVE" ] && usage "Error: Cannot read file '$LIVE'."
+			;;
+		n)
+			USENS="@$OPTARG"
+			;;
+		r)
+			REPEAT=$OPTARG
 			;;
         \?)
             echo "Error: Invalid option: -$OPTARG" >&2
@@ -71,7 +104,7 @@ if [ "$MODE" == "f" ]; then
 		#trim leading *. from name
 		TARGET="${TARGET/'*.'/}"
 		echo "Target [$i/$TOTAL]: $TARGET" >&2
-		dig +short A $TARGET | onlyIPs | while read IP; do
+		digMy $TARGET | onlyIPs | while read IP; do
 			if [ -n "$LIVE" ]; then
 				if grep -q -l "\<$IP\>" $LIVE; then
 					echo "$IP;true;$TARGET"
@@ -87,7 +120,12 @@ else
 	TARGET="$1"
 	TARGET="${TARGET/'*.'/}"
 	[ -z "$TARGET" ] && usage "Error: DNS name not specified."
-	resolveA $TARGET
+	if [ "$ALLNS" == "1" ]; then
+		echo "Known nameservers:"
+		digNameServers $TARGET
+	else
+		digMy $TARGET
+	fi
 
 #	NS=`digNameServers $TARGET`
 #	echo $NS
