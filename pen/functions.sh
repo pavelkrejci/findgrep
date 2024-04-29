@@ -52,7 +52,7 @@ sortTLD1st() {
 sortIP() {
 	#argument empty or 0 --> do not sort, otherwise sort
 	if [[ -z "$1" || "$1" -eq 0 ]]; then
-		cat -
+		cat
 	else
 		sort -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n /dev/stdin
 	fi
