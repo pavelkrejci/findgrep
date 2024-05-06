@@ -69,7 +69,7 @@ if [ "$MODE" == "f" ]; then
     done <$FILE
     set -x
     if [ -n "$MONITOR" ]; then
-        sudo watch -n$MONITOR "echo \"$(sudo timeout $MONITOR tcpdump -t -l -n $INT $filter | wc -l) / $MONITOR\" | bc"
+        sudo watch -n$MONITOR "echo \"\$(timeout $MONITOR tcpdump -t -l -n $INT $filter 2>/dev/null | wc -l) / $MONITOR\" | bc; echo pkt/s"
     else
         # Run the tcpdump command with the generated filter
         echo "tcpdump -n $INT $OUTFILE <$i hosts in filter>"
@@ -91,7 +91,7 @@ elif [ "$MODE" == "s" ]; then
 
     set -x
     if [ -n "$MONITOR" ]; then
-        sudo watch -n$MONITOR "echo \"$(sudo timeout $MONITOR tcpdump -t -l -n $INT $filter | wc -l) / $MONITOR\" | bc"
+        sudo watch -n$MONITOR "echo \"\$(timeout $MONITOR tcpdump -t -l -n $INT $filter 2>/dev/null | wc -l) / $MONITOR\" | bc; echo pkt/s"
     else
         # Run the tcpdump command with the generated filter
         #echo "tcpdump -n $INT $OUTFILE <$i hosts in filter>"
