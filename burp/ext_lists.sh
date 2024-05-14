@@ -34,7 +34,7 @@ el["CommandInjection"]="Command Injection Attacker,PHP Object Injection Check,PH
 el["FileUpload"]="File Upload Traverser,Upload Scanner"
 el["ResponseIntercept"]="HTTP Mock"
 el["CSRF"]="CSRF Token Tracker,Token Extractor,Additional CSRF Checks,CSRF Scanner"
-el["XSS"]="XSS Cheatsheet,Additional Scanner Checks,Upload Scanner"
+el["XSS"]="XSS Cheatsheet,Additional Scanner Checks,Upload Scanner,Paramalyzer,Reflected Parameters"
 #Warning: Collaborator Everywhere logs hits into event log and console, but Collaborator GUI is empty!!! Switch off to interact with the Collaborator tab manually again.
 el["SSRF"]="Collaborator Everywhere,DNS Analyzer,Upload Scanner"
 el["CMS"]="CMS Scanner"
