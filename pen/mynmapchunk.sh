@@ -77,7 +77,7 @@ shift $((OPTIND-1))
 
 if [ "$MODE" == "c" ]; then
     rm chunk*.split
-    expandCIDR.py -f $FILE | /usr/bin/split -l $CHUNK -d -a4 --additional-suffix=.split - chunk
+	$(dirname $0)/expandCIDR.py -f $FILE | /usr/bin/split -l $CHUNK -d -a4 --additional-suffix=.split - chunk
 elif [ "$MODE" == "f" ]; then
     rm chunk*.split
     /usr/bin/split -l $CHUNK -d -a4 --additional-suffix=.split $FILE chunk
