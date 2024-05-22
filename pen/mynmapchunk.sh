@@ -26,8 +26,8 @@ if [ $EUID -ne 0 ]; then
 fi
 
 CHUNK=10
-T="-T4"
-RATE="--max-rate 400"
+T="-T4 --max-rtt-timeout=40ms"
+RATE="--max-rate 200"
 PORTS=""
 while getopts "a:c:f:n:T:r:p:" opt; do
 	case "$opt" in
