@@ -13,11 +13,12 @@
 
 #  --out(f,F)ile|-oa/-oA <fname> log to a LOG,JSON,CSV,HTML file (see nmap). -oA/-oa: pretty/flat JSON.
 
-TESTSSL=~/bin/pen/testssl.sh/testssl.sh
+TESTSSL=$(ls ~/testssl.sh*/testssl.sh | head -n 1)
+
 
 usage() {
 	BN=`basename $0`
-	echo "$1"
+	echo -e "$1"
 	echo "Usage: $BN <options> <IP:port> | <IP sockets list file>"
 	echo "- uses ~/bin/pen/testssl.sh/testssl.sh to scan single IP socket or"
 	echo "-f = file with IP sockets, one per line"
@@ -50,14 +51,18 @@ done
 shift $((OPTIND-1))
 
 FILE="$1"
-[ ! -x "$TESTSSL" ] && usage "Error: Cannot execute $TESTSSL"
+[ ! -x "$TESTSSL" ] && usage "Error: Cannot execute $TESTSSL.\nInstall like this:\n# cd ~\n# git clone --depth 1 https://github.com/drwetter/testssl.sh.git"
 [ -z "$FILE" ] && usage "Error: IP socket(s) not specified."
 
 if [ "$MODE" == "f" ]; then
 	[ ! -r "$FILE" ] && usage "Error: Cannot read file '$FILE'."
-	$TESTSSL --connect-timeout 5 --openssl-timeout 5 -E -h -oA auto --file $FILE
+	CMD="$TESTSSL -R --connect-timeout 5 --openssl-timeout 5 -E -h -oA auto --file $FILE"
+	echo $CMD
+	$CMD
 else
-	$TESTSSL --connect-timeout 5 --openssl-timeout 5 -E -h --warnings off -oA auto $FILE
+	CMD="$TESTSSL --connect-timeout 5 --openssl-timeout 5 -E -h --warnings off -oA auto $FILE"
+	echo $CMD
+	$CMD
 fi
 
 
