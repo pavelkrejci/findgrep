@@ -21,11 +21,11 @@ declare -A el
 #would require commas change to ; as separator
 el["default"]="Decoder Improved,ExifTool Scanner,Request Minimizer,Software Version Reporter"
 el["API"]="HTTP Methods Discloser,JS Link Finder,OpenAPI Parser,Filter Options Method"
-el["ActiveScan"]="Active Scan++,Additional CSRF Checks"
-el["PassiveScan"]="Headers Analyzer,Additional Scanner Checks,Software Version Reporter,Software Vulnerability Scanner"
+el["ActiveScan"]="Active Scan++,Additional CSRF Checks,OAUTH Scan"
+el["PassiveScan"]="Headers Analyzer,Additional Scanner Checks,Software Version Reporter,Software Vulnerability Scanner,OAUTH Scan,Detect Dynamic JS"
 el["CSRF"]="CSRF Scanner,CSRF Token Tracker,Additional CSRF Checks"
-el["Authenticate"]="Auth Analyzer,Authentication Token Obtain and Replace,OAUTH Scan,OAuth2 Token Grabber,Session Auth,Detect Dynamic JS"
-el["Autorize"]="Autorize"
+el["Session"]="JSON Web Tokens,JWT Editor,Session Handler+"
+el["Autorize"]="AuthMatrix,Auth Analyzer,Autorize,Authentication Token Obtain and Replace,OAuth2 Token Grabber"
 el["SSI"]="Backslash Powered Scanner"
 el["SQL"]="NoSQLi Scanner,SQLMap DNS Collaborator,SQLiPy Sqlmap Integration"
 #TODO Collaborator Everywhere might cause problems
