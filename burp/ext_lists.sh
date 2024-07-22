@@ -2,9 +2,10 @@
 BN=`basename $0`
 usage() {
 	echo "Usage: $BN [-c <Burp_user_config.json>] [-o <Output_user_config.json>] list1 [list2] ..."
+	echo "- enable the selected extension list"
 	echo "- default input config is /home/atos/.BurpSuite/UserConfigPro.json"
 	echo "- if no -o specified, the input config is replaced"
-	echo "- enable the selected extension list"
+	echo "- with -o defined, only keeping the part extender: { extensions: [ ..."
 	echo "-l = list the lists"
 	exit 2
 }
@@ -103,7 +104,7 @@ for key in "$@"; do
 	done
 done
 
-diff -w $CONFIG_FILE $TMP
+#diff -w $CONFIG_FILE $TMP
 
 if [ -z "$OUT_FILE" ]; then
 	echo -n "Do you want to apply these config changes (Yy / Nn): "
@@ -123,5 +124,7 @@ if [ -z "$OUT_FILE" ]; then
 		echo "Invalid input. Please enter 'Y' or 'N'."
 	fi
 else
+	echo "Filtering only \"extender\": { extensions ..."
+	jq '{user_options: {extender: {extensions: .user_options.extender.extensions}}}' $TMP | sponge $TMP
 	echo "Saved to $TMP."
 fi
