@@ -1,0 +1,1 @@
+/home/atos/PayloadsAllTheThings/Command Injection/Intruder/command-execution-unix.txt

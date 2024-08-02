@@ -37,8 +37,10 @@ el["ResponseIntercept"]="HTTP Mock"
 el["CSRF"]="CSRF Token Tracker,Token Extractor,Additional CSRF Checks,CSRF Scanner"
 el["XSS"]="XSS Cheatsheet,Additional Scanner Checks,Upload Scanner,Paramalyzer,Reflected Parameters"
 #Warning: Collaborator Everywhere logs hits into event log and console, but Collaborator GUI is empty!!! Switch off to interact with the Collaborator tab manually again.
+#Collaborator Everywhere modifies each request's header with oastify payloads
 el["SSRF"]="Collaborator Everywhere,DNS Analyzer,Upload Scanner"
 el["CMS"]="CMS Scanner"
+el["XXE"]="Content Type Converter,Office Open XML Editor"
 
 
 ##################################
