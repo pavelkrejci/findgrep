@@ -1,0 +1,1 @@
+/home/atos/SecLists/Discovery/Web-Content/default-web-root-directory-linux.txt
