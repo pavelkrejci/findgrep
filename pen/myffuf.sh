@@ -15,8 +15,9 @@ entry_etc_hosts() {
 
 #2 fuzz for subdomains, only for public URLs
 fuzz_subdomains() {
-	#TODO
-	:
+	ffuf -ic -w ~/SecLists/Discovery/DNS/subdomains-top1million-20000.txt:FUZZ -u http://$IP:$PORT/ -H "Host: FUZZ.$URL" -mc all $FILTER
+#	gobuster vhost -w ~/SecLists/Discovery/DNS/subdomains-top1million-20000.txt -u $URL --append-domain
+
 }
 
 #3 fuzz for vhosts, 
@@ -113,7 +114,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Check if IP:PORT parameters are provided
-if [[ -z $IP || -z $PORT || -z $URL ]]; then
+if [[ -z "$IP" || -z "$PORT" || -z "$URL" ]]; then
     echo "Error: IP:PORT and URL are required."
     usage
 fi
