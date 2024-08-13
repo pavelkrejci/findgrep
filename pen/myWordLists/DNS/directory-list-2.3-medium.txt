@@ -1,0 +1,1 @@
+/home/atos/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt
