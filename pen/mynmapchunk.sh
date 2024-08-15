@@ -104,9 +104,9 @@ for ch in chunk*.split; do
         continue
     fi
     if [ -z "$UDP" ]; then
-        CMD="/usr/bin/nmap -n -Pn -sS $PORTS $RATE $T $RTT -v -d3 -iL $ch -oX $chw.xml"
+        CMD="/usr/bin/nmap -n -Pn -sS --disable-arp-ping --reason $PORTS $RATE $T $RTT -v -d3 -iL $ch -oX $chw.xml"
     else
-        CMD="/usr/bin/nmap -n -Pn -sU $PORTS $RATE $T $RTT -v -d3 -iL $ch -oX $chw.xml"
+        CMD="/usr/bin/nmap -n -Pn -sU --disable-arp-ping --reason $PORTS $RATE $T $RTT -v -d3 -iL $ch -oX $chw.xml"
     fi
     echo $CMD
     $CMD >/dev/null 2>&1
