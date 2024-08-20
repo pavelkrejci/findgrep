@@ -53,7 +53,7 @@ alias wmiquery.py='/usr/bin/python3 /usr/share/doc/python3-impacket/examples/wmi
 # some more ls aliases
 alias ll='ls -l'
 alias la='ls -A'
-alias l='ls -laF'
+alias l='ls -lhaF'
 alias '..'='cd ..'
 #WordPress scan
 alias wpscan_mytoken='wpscan --api-token KaJMBG9Ityv8eIprRoUKTfofioIAwjVmg90q0RXMtdY'
@@ -63,3 +63,9 @@ alias gp="git pull"
 alias gl="git log"
 alias gd="git diff"
 alias ga="git add"
+
+f() {
+	set -x
+    /usr/bin/find . \( -path "/mnt" -o -path "/media" -o -path "/dev" \) -prune -o -iname "$@"
+	set +x
+}

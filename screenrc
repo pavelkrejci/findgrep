@@ -1,1 +1,8 @@
-term linux
+#this disables the screen built-in scroll buffer, so that you can use Shift+PgUp like in normal terminal
+#termcapinfo xterm* ti@:te@
+#scrolling by mouse is not possible within screen even with this enabled
+#but use Ctrl+a, [ and then you can scroll with mouse wheel or Shift+PgUp
+#mousetrack on
+defscrollback 50000
+startup_message off
+deflogin off
