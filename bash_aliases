@@ -63,6 +63,7 @@ alias gp="git pull"
 alias gl="git log"
 alias gd="git diff"
 alias ga="git add"
+alias s="screen"
 
 f() {
 	set -x
