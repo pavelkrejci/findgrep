@@ -5,11 +5,11 @@
 
 #debugging
 #set -x
-#exec &>/tmp/cmdhide.log
+#exec &>/tmp/`basename $0`.log
 
 # Check if at least 2 arguments are provided
 if [ "$#" -le 1 ]; then
-    echo "Usage: $0 <data1> <data2> ... <command>"
+    echo "Usage: `basename $0` <data1> <data2> ... <command>"
     exit 1
 fi
 
