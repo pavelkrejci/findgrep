@@ -63,7 +63,11 @@ alias gp="git pull"
 alias gl="git log"
 alias gd="git diff"
 alias ga="git add"
+alias sudo="sudo "
+alias aptsn="apt-cache search --names-only"
 alias s="screen"
+alias aptli="apt list --installed"
+alias sb="sudo bash"
 
 f() {
 	set -x
