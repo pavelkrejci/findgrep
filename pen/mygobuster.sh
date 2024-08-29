@@ -3,7 +3,9 @@
 # Define usage function
 usage() {
 	BN=`basename $0`
-    echo "Usage: $BN [-d|--dir] [-x extensions] <URL>"
+    echo "Usage: $BN [-d|-h] [-x extensions] <URL>"
+	echo "-d = fuzz directories"
+	echo "-h = fuzz vhosts"
     exit 2
 }
 
@@ -11,63 +13,58 @@ fuzz_dirs() {
 	gobuster dir --wordlist ~/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt --url $URL $FILTER
 }
 
+fuzz_vhosts() {
+	gobuster dns --wordlist ~/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -d $URL $FILTER
+}
+
+
 
 #####################################
 # main
 #####################################
 
-
-# Parse command line options
-while [[ $# -gt 0 ]]; do
-    key="$1"
-
-    case $key in
-        -d|--dir)
+while getopts "dhx:" opt; do
+	case "$opt" in
+		d)
             DIRS=true
-            shift
             ;;
-        -p|--params)
-            PARAMS=true
-            shift
+		h)
+            VHOSTS=true
             ;;
-        -a|--all)
-            ALL=true
-            shift
+		x)
+			FILTER="-x $OPTARG $FILTER"
             ;;
-		-x)
-			FILTER="-x $2 $FILTER"
-			shift 2
-			;;
-		-fs)
-			FILTER="-fs $2 $FILTER"
-			shift 2
-			;;
-		-mc)
-			FILTER="-mc $2 $FILTER"
-			shift 2
-			;;
-        *)
-			if [[ -z $URL ]]; then
-				URL="$1"
-            else
-                echo "Unexpected argument: $1"
-                usage
-            fi
-            shift
+        \?)
+            echo "Error: Invalid option: -$OPTARG" >&2
+            exit 1
+            ;;
+        :)
+            echo "Error: Option -$OPTARG requires an argument." >&2
+            exit 1
             ;;
     esac
 done
+shift $((OPTIND-1))
+URL="$1"
 
 # Check if URL
-if [[ -z "$URL" ]]; then
+if [ -z "$URL" ]; then
     echo "Error: URL is required."
     usage
 fi
 
-if [[ $DIRS ]]; then
+if [ $DIRS ]; then
     echo "Directories option selected."
+	set -x
 	fuzz_dirs
+	set +x
+elif [ $VHOSTS ]; then
+    echo "Vhosts option selected."
+	set -x
+	fuzz_vhosts
+	set +x
 fi
+
 
 echo "No more options selected."
 
