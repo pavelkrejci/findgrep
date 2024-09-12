@@ -47,8 +47,12 @@ fuzz_dirs() {
 }
 
 fuzz_params() {
-	ffuf -w ~/SecLists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://$IP:$PORT/$URL?FUZZ=key $FILTER
-	ffuf -w ~/SecLists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://$IP:$PORT/$URL -X POST -d 'FUZZ=key' -H 'Content-Type: application/x-www-form-urlencoded' $FILTER
+	#longer
+	WORDLIST=~/SecLists/Discovery/Web-Content/raft-medium-words.txt
+	#shorter
+	#WORDLIST=~/SecLists/Discovery/Web-Content/burp-parameter-names.txt
+	ffuf -w $WORDLIST:FUZZ -u http://$IP:$PORT/$URL?FUZZ=key $FILTER
+	ffuf -w $WORDLIST:FUZZ -u http://$IP:$PORT/$URL -X POST -d 'FUZZ=key' -H 'Content-Type: application/x-www-form-urlencoded' $FILTER
 }
 
 #####################################
