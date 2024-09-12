@@ -20,7 +20,7 @@ OUT_FILE=""
 declare -A el
 #TODO maybe useful: CSTC, Modular HTTP Manipulator
 #would require commas change to ; as separator
-el["default"]="Decoder Improved,ExifTool Scanner,Request Minimizer,Software Version Reporter"
+el["default"]="Decoder Improved,ExifTool Scanner,Request Minimizer,Software Version Reporter,Intruder Time Payloads"
 el["API"]="HTTP Methods Discloser,JS Link Finder,OpenAPI Parser,Filter Options Method"
 el["ActiveScan"]="Active Scan++,Additional CSRF Checks,OAUTH Scan"
 el["PassiveScan"]="Headers Analyzer,Additional Scanner Checks,Software Version Reporter,Software Vulnerability Scanner,OAUTH Scan,Detect Dynamic JS"
@@ -30,6 +30,7 @@ el["Autorize"]="AuthMatrix,Auth Analyzer,Autorize,Authentication Token Obtain an
 el["SSI"]="Backslash Powered Scanner"
 el["SQL"]="NoSQLi Scanner,SQLMap DNS Collaborator,SQLiPy Sqlmap Integration"
 #TODO Collaborator Everywhere might cause problems
+#TODO Collabfiltrator does not work at all, no payload received when 100% triggered
 el["Collaborator"]="SQLMap DNS Collaborator,Collabfiltrator,Collaborator Everywhere,PHP Object Injection Slinger"
 el["CommandInjection"]="Command Injection Attacker,PHP Object Injection Check,PHP Object Injection Slinger"
 el["FileUpload"]="File Upload Traverser,Upload Scanner"
