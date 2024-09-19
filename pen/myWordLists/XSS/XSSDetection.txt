@@ -1,0 +1,1 @@
+/home/atos/PayloadsAllTheThings/XSS Injection/Intruders/XSSDetection.txt
