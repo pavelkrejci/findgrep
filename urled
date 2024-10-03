@@ -32,6 +32,9 @@ rawurlencode() {
 ################################################
 # MAIN
 ################################################
+echo "TODO: This script is obsolete, use urlenc.py"
+exit 0
+
 [ $# -eq 0 ] && usage
 
 while getopts "edf:" opt; do

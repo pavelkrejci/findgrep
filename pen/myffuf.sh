@@ -3,7 +3,7 @@
 # Define usage function
 usage() {
 	BN=`basename $0`
-    echo "Usage: $BN [-e|--etchosts] [-s|--subdomains] [-v|--vhosts] [-e|--extensions] [-d|--dirs] [-p|--params] [-a|--all] [-fs <size>] [-mc <code>] <IP:PORT> <URL>"
+    echo "Usage: $BN [-e|--etchosts] [-s|--subdomains] [-v|--vhosts] [-e|--extensions] [-d|--dirs] [-f|--files] [-p|--params] [-a|--all] [-fs <size>] [-mc <code>] [-b <cookies>] <IP:PORT> <URL>"
     exit 2
 }
 
@@ -13,16 +13,17 @@ entry_etc_hosts() {
 	sudo sh -c "sed -i \"/.*$1/d\" /etc/hosts; echo \"$2 $1\" >>/etc/hosts"
 }
 
-#2 fuzz for subdomains, only for public URLs
+#2 fuzz for subdomains
 fuzz_subdomains() {
-	ffuf -ic -w ~/SecLists/Discovery/DNS/subdomains-top1million-20000.txt:FUZZ -u http://$IP:$PORT/ -H "Host: FUZZ.$URL" -mc all $FILTER
+	#ffuf -ic -w ~/SecLists/Discovery/DNS/subdomains-top1million-20000.txt:FUZZ -u http://$IP:$PORT/ -H "Host: FUZZ.$URL" -mc all $FILTER
+	ffuf -ic -w ~/SecLists/Discovery/DNS/subdomains-top1million-20000.txt:FUZZ -u http://$IP:$PORT/ -H "Host: FUZZ.$URL" $FILTER
 #	gobuster vhost -w ~/SecLists/Discovery/DNS/subdomains-top1million-20000.txt -u $URL --append-domain
 
 }
 
-#3 fuzz for vhosts, 
+#3 fuzz for vhosts
 fuzz_vhosts() {
-	ffuf -ic -w ~/SecLists/Discovery/DNS/subdomains-top1million-20000.txt:FUZZ -u http://$IP:$PORT/ -H "Host: FUZZ.$URL" -fs 985
+	ffuf -ic -w ~/SecLists/Discovery/DNS/subdomains-top1million-20000.txt:FUZZ -u http://$IP:$PORT/ -H "Host: FUZZ.$URL" $FILTER
 }
 
 fuzz_extensions() {
@@ -48,12 +49,25 @@ fuzz_dirs() {
 
 fuzz_params() {
 	#longer
-	WORDLIST=~/SecLists/Discovery/Web-Content/raft-medium-words.txt
+	WORDLIST=~/SecLists/Discovery/Web-Content/raft-large-words-lowercase.txt
 	#shorter
 	#WORDLIST=~/SecLists/Discovery/Web-Content/burp-parameter-names.txt
+	set -x
 	ffuf -w $WORDLIST:FUZZ -u http://$IP:$PORT/$URL?FUZZ=key $FILTER
-	ffuf -w $WORDLIST:FUZZ -u http://$IP:$PORT/$URL -X POST -d 'FUZZ=key' -H 'Content-Type: application/x-www-form-urlencoded' $FILTER
+	set +x
+	#TODO
+#	ffuf -w $WORDLIST:FUZZ -u http://$IP:$PORT/$URL -X POST -d 'FUZZ=key' -H 'Content-Type: application/x-www-form-urlencoded' $FILTER
 }
+
+fuzz_files() {
+	#longer
+	WORDLIST=~/SecLists/Discovery/Web-Content/raft-large-files-lowercase.txt
+	#shorter
+	#WORDLIST=~/SecLists/Discovery/Web-Content/raft-small-files-lowercase.txt
+	ffuf -w $WORDLIST:FUZZ -u http://$IP:$PORT/$URL/FUZZ $FILTER
+#	ffuf -w $WORDLIST:FUZZ -u http://$IP:$PORT/$URL -X POST -d 'FUZZ=key' -H 'Content-Type: application/x-www-form-urlencoded' $FILTER
+}
+
 
 #####################################
 # main
@@ -85,6 +99,10 @@ while [[ $# -gt 0 ]]; do
             DIRS=true
             shift
             ;;
+        -f|--files)
+            FILES=true
+            shift
+            ;;
         -p|--params)
             PARAMS=true
             shift
@@ -95,6 +113,10 @@ while [[ $# -gt 0 ]]; do
             ;;
 		-fs)
 			FILTER="-fs $2 $FILTER"
+			shift 2
+			;;
+		-b)
+			FILTER="-b $2 $FILTER"
 			shift 2
 			;;
 		-mc)
@@ -151,6 +173,11 @@ fi
 if [[ $DIRS ]]; then
     echo "Directories option selected."
 	fuzz_dirs
+fi
+
+if [[ $FILES ]]; then
+    echo "Files option selected."
+	fuzz_files
 fi
 
 if [[ $PARAMS ]]; then
