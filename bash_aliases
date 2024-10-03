@@ -55,8 +55,6 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -lhaF'
 alias '..'='cd ..'
-#WordPress scan
-alias wpscan_mytoken='wpscan --api-token KaJMBG9Ityv8eIprRoUKTfofioIAwjVmg90q0RXMtdY'
 #git
 alias gs="git status"
 alias gp="git pull"
@@ -68,6 +66,16 @@ alias aptsn="apt-cache search --names-only"
 alias s="screen"
 alias aptli="apt list --installed"
 alias sb="sudo bash"
+alias vsl="virsh list --all"
+alias lt='ls -lhaFt --reverse'
+
+lsten() {
+	if [ -z "$1" ]; then
+		/usr/bin/sudo /usr/bin/lsof -nP -sTCP:LISTEN -iTCP
+	else
+		/usr/bin/sudo /usr/bin/lsof -nP -sTCP:LISTEN -iTCP:$1
+	fi
+}
 
 f() {
 	set -x
