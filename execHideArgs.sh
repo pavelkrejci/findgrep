@@ -4,8 +4,8 @@
 #then deletes the file in background and dies, in order to hide the secret from proc list and file system
 
 #debugging
-#set -x
-#exec &>/tmp/`basename $0`.log
+set -x
+exec &>>/tmp/`basename $0`.log
 
 # Check if at least 2 arguments are provided
 if [ "$#" -le 1 ]; then
