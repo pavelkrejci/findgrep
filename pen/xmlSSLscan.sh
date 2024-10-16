@@ -99,6 +99,8 @@ elif [ "$MODE" == "r" ]; then
   <xsl:template match="/">
   <xsl:for-each select="//ssltest[certificates/certificate/subject]">
 	<xsl:value-of select="@host"/>
+	<xsl:text>:</xsl:text>
+	<xsl:value-of select="@port"/>
 	<xsl:text>;</xsl:text>
 	<xsl:for-each select="protocol[@enabled='1']">
 	  <xsl:value-of select="translate(@type,'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
@@ -142,7 +144,7 @@ elif [ "$MODE" == "r" ]; then
 EOF
 ) | sortIP $SORT
 elif [ "$MODE" == "t" ]; then
-	fixXML document $FILE | $XMLS sel --recover -T -t -m '//ssltest[cipher]' -n -v '@host' -m 'cipher' -o ',' -v '@cipher' sortIP $SORT
+	fixXML document $FILE | $XMLS sel --recover -T -t -m '//ssltest[cipher]' -n -v '@host' -o ':' -v '@port' -m 'cipher' -o ',' -v '@cipher' | sortIP $SORT
 fi
 
 exit 0
