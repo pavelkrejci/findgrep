@@ -21,7 +21,7 @@ declare -A el
 #TODO maybe useful: CSTC, Modular HTTP Manipulator
 #would require commas change to ; as separator
 el["default"]="Decoder Improved,ExifTool Scanner,Request Minimizer,Software Version Reporter,Intruder Time Payloads"
-el["API"]="HTTP Methods Discloser,JS Link Finder,OpenAPI Parser,Filter Options Method"
+el["API"]="HTTP Methods Discloser,JS Link Finder,OpenAPI Parser,Filter Options Method,Wsdler"
 el["ActiveScan"]="Active Scan++,Additional CSRF Checks,OAUTH Scan"
 el["PassiveScan"]="Headers Analyzer,Additional Scanner Checks,Software Version Reporter,Software Vulnerability Scanner,OAUTH Scan,Detect Dynamic JS"
 el["CSRF"]="CSRF Scanner,CSRF Token Tracker,Additional CSRF Checks"
