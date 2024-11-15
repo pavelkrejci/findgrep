@@ -6,8 +6,8 @@ usage() {
 	echo "$1"
 	echo "Usage: $BN <options> [<path to python environment>]"
     echo "<options>:"
-    echo "-c <env>"
-    echo "-e <env>"
+    echo "-c <env> = crate environment"
+    echo "-e <env> = use environment"
 	echo "The default path is $DEFPYENV"
 	exit 2
 }
