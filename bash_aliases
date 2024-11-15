@@ -68,6 +68,7 @@ alias aptli="apt list --installed"
 alias sb="sudo bash"
 alias vsl="virsh list --all"
 alias lt='ls -lhaFt --reverse'
+alias topmem='top -1 -o %MEM -c'
 
 lsten() {
 	if [ -z "$1" ]; then
