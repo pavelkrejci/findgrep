@@ -44,7 +44,7 @@ PYENV="${1:-$DEFPYENV}"
 
 #####################################################
 # MAIN
-set -x
+#set -x
 if [ "$MODE" == "c" ]; then
 	if [ -d "$PYENV" ]; then
 		echo "The directory $PYENV already exists. Do you really want to recreate it? [y/n]:"
