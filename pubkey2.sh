@@ -14,7 +14,8 @@ sed -i "/^$3/d" ~/.ssh/known_hosts
 cat $1 | ssh -o "StrictHostKeyChecking no" $2@$3 "mkdir .ssh; chmod 700 .ssh; echo >>.ssh/authorized_keys; chmod 600 .ssh/authorized_keys; cat - >> .ssh/authorized_keys"
 
 scp ~/bin/vimrc $2@$3:.vimrc
-scp ~/bin/findgrep $2@$3:
+scp ~/bin/screenrc $2@$3:.screenrc
+#scp ~/bin/findgrep $2@$3:
 scp ~/bin/bash_aliases $2@$3:.bash_aliases
 
 #ssh engr@$1 "/usr/bin/sed -i '/^TMOUT/d' /etc/profile"
