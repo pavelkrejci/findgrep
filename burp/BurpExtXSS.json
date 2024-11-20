@@ -1,0 +1,916 @@
+{
+  "user_options": {
+    "extender": {
+      "extensions": [
+        {
+          "bapp_serial_version": 3,
+          "bapp_uuid": "e2a137ad44984ccb908375fa5b2c618d",
+          "errors": "ui",
+          "extension_file": "bapps/e2a137ad44984ccb908375fa5b2c618d/build/libs/dotnet-beautifier-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": ".NET Beautifier",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 31,
+          "bapp_uuid": "3123d5b5f25c4128894d97ea1acc4976",
+          "errors": "ui",
+          "extension_file": "bapps/3123d5b5f25c4128894d97ea1acc4976/activeScan++.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "Active Scan++",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "2d12070c90cb4a0f91cde0b8927fd606",
+          "errors": "ui",
+          "extension_file": "bapps/2d12070c90cb4a0f91cde0b8927fd606/EasyCSRF.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "Additional CSRF Checks",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 6,
+          "bapp_uuid": "a158fd3fc9394253be3aa0bc4c181d1f",
+          "errors": "ui",
+          "extension_file": "bapps/a158fd3fc9394253be3aa0bc4c181d1f/Burp-MissingScannerChecks.py",
+          "extension_type": "python",
+          "loaded": true,
+          "name": "Additional Scanner Checks",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 27,
+          "bapp_uuid": "7db49799266c4f85866f54d9eab82c89",
+          "errors": "ui",
+          "extension_file": "bapps/7db49799266c4f85866f54d9eab82c89/target/AuthAnalyzer-1.1.14-jar-with-dependencies.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Auth Analyzer",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 7,
+          "bapp_uuid": "51327b097b354243b307b4ed87ba39eb",
+          "errors": "ui",
+          "extension_file": "bapps/51327b097b354243b307b4ed87ba39eb/target/ATOR-v2.3.0-SNAPSHOT-jar-with-dependencies.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Authentication Token Obtain and Replace",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 23,
+          "bapp_uuid": "f9bbac8c4acf4aefa4d7dc92a991af2f",
+          "errors": "ui",
+          "extension_file": "bapps/f9bbac8c4acf4aefa4d7dc92a991af2f/Autorize.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "Autorize",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 5,
+          "bapp_uuid": "b89968942a3e4cab916b6c761beb2003",
+          "errors": "ui",
+          "extension_file": "bapps/b89968942a3e4cab916b6c761beb2003/target/autowasp-1.0-SNAPSHOT-jar-with-dependencies.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Autowasp",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 28,
+          "bapp_uuid": "9cff8c55432a45808432e26dbb2b41d8",
+          "errors": "ui",
+          "extension_file": "bapps/9cff8c55432a45808432e26dbb2b41d8/build/libs/backslash-powered-scanner.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Backslash Powered Scanner",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "1bf95d0be40c447b94981f5696b1a18e",
+          "errors": "ui",
+          "extension_file": "bapps/1bf95d0be40c447b94981f5696b1a18e/./build/libs/cms-scan.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "CMS Scanner",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 8,
+          "bapp_uuid": "35237408a06043e9945a11016fcbac18",
+          "errors": "ui",
+          "extension_file": "bapps/35237408a06043e9945a11016fcbac18/csp-auditor-burp-plugin/build/libs/csp-auditor-burp-2.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "CSP Auditor",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "b113bdc1390647b092cb527c0b95116d",
+          "errors": "ui",
+          "extension_file": "bapps/b113bdc1390647b092cb527c0b95116d/csp-bypass-plugin.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "CSP-Bypass",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 6,
+          "bapp_uuid": "60f172f27a9b49a1b538ed414f9f27c3",
+          "errors": "ui",
+          "extension_file": "bapps/60f172f27a9b49a1b538ed414f9f27c3/build/libs/csrf-scanner-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "CSRF Scanner",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 4,
+          "bapp_uuid": "61ddd8a0464544218dfd94114c910548",
+          "errors": "ui",
+          "extension_file": "bapps/61ddd8a0464544218dfd94114c910548/build/libs/sync-parameter-1.1.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "CSRF Token Tracker",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 8,
+          "bapp_uuid": "fff2b36e392f49afbeb363403c07c6b8",
+          "errors": "ui",
+          "extension_file": "bapps/fff2b36e392f49afbeb363403c07c6b8/Collabfiltrator.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "Collabfiltrator",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 5,
+          "bapp_uuid": "2495f6fb364d48c3b6c984e226c02968",
+          "errors": "ui",
+          "extension_file": "bapps/2495f6fb364d48c3b6c984e226c02968/build/libs/collaborator-everywhere-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Collaborator Everywhere",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "33e4402eee514724b768c0342abadb8a",
+          "errors": "ui",
+          "extension_file": "bapps/33e4402eee514724b768c0342abadb8a/./build/libs/shelling.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Command Injection Attacker",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 5,
+          "bapp_uuid": "84ff4dceaae14e84990c6f3f7fe999bd",
+          "errors": "ui",
+          "extension_file": "bapps/84ff4dceaae14e84990c6f3f7fe999bd/CustomDeserializer.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "CustomDeserializer",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 3,
+          "bapp_uuid": "9285f245f3fa49d18f77650cfcba9b3e",
+          "errors": "ui",
+          "extension_file": "bapps/9285f245f3fa49d18f77650cfcba9b3e/build/libs/DNSAnalyzer-all-1.0.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "DNS Analyzer",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 9,
+          "bapp_uuid": "0a05afd37da44adca514acef1cdde3b9",
+          "errors": "ui",
+          "extension_file": "bapps/0a05afd37da44adca514acef1cdde3b9/build/libs/decoder-improved-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Decoder Improved",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 8,
+          "bapp_uuid": "4a657674ebe3410b92280613aa512304",
+          "errors": "ui",
+          "extension_file": "bapps/4a657674ebe3410b92280613aa512304/DetectDynamicJS.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "Detect Dynamic JS",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "80eb8fd46bf847b4b17861482c2f2a30",
+          "errors": "ui",
+          "extension_file": "bapps/80eb8fd46bf847b4b17861482c2f2a30/discoveringRT.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "Discover Reverse Tabnabbing",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "c5138c16ec984118af95c41a89773953",
+          "errors": "ui",
+          "extension_file": "bapps/c5138c16ec984118af95c41a89773953/burp-encode-ip.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "Encode IP",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 13,
+          "bapp_uuid": "4f01db4b668c4126a68e4673df796f0f",
+          "errors": "ui",
+          "extension_file": "bapps/4f01db4b668c4126a68e4673df796f0f/target/burp-suite-error-message-checks-2.0.0.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Error Message Checks",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 5,
+          "bapp_uuid": "e1d08d4ab1ea4c17be3431d7d2b20b30",
+          "errors": "ui",
+          "extension_file": "bapps/e1d08d4ab1ea4c17be3431d7d2b20b30/target/EsPReSSO-3.3.1-jar-with-dependencies.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "EsPReSSO",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 5,
+          "bapp_uuid": "858352a27e6e4a6caa802e61fdeb7dd4",
+          "errors": "ui",
+          "extension_file": "bapps/858352a27e6e4a6caa802e61fdeb7dd4/target/BurpExifToolScanner-1.0.9.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "ExifTool Scanner",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "5f46fe766e9c435992c610160bb53cba",
+          "errors": "ui",
+          "extension_file": "bapps/5f46fe766e9c435992c610160bb53cba/uploader.rb",
+          "extension_type": "ruby",
+          "loaded": false,
+          "name": "File Upload Traverser",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 5,
+          "bapp_uuid": "fa14ac579cff4682b32f39af8d3651e7",
+          "errors": "ui",
+          "extension_file": "bapps/fa14ac579cff4682b32f39af8d3651e7/filter-options-method.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "Filter Options Method",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 7,
+          "bapp_uuid": "ae1cce0c6d6c47528b4af35faebc3ab3",
+          "errors": "ui",
+          "extension_file": "bapps/ae1cce0c6d6c47528b4af35faebc3ab3/build/libs/freddy-2.2.4.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Freddy, Deserialization Bug Finder",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "64060217b1d84abfa14b01edf3a29817",
+          "errors": "ui",
+          "extension_file": "bapps/64060217b1d84abfa14b01edf3a29817/build/libs/html5-auditor-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "HTML5 Auditor",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "2d84c07f3a8d4e2b97828cd0aa814b07",
+          "errors": "ui",
+          "extension_file": "bapps/2d84c07f3a8d4e2b97828cd0aa814b07/target/http-methods-discloser-1.0.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "HTTP Methods Discloser",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 12,
+          "bapp_uuid": "42680f96fc214513bc5211b3f25fd98b",
+          "errors": "ui",
+          "extension_file": "bapps/42680f96fc214513bc5211b3f25fd98b/target/BurpHttpMock-1.1.7-jar-with-dependencies.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "HTTP Mock",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "c1c32424fb8a4843a5404aa5ed5d711a",
+          "errors": "ui",
+          "extension_file": "bapps/c1c32424fb8a4843a5404aa5ed5d711a/build/libs/HackBar-2.0.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "HackBar, Payload Bucket",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 44,
+          "bapp_uuid": "65033cbd2c344fbabe57ac060b5dd100",
+          "errors": "ui",
+          "extension_file": "bapps/65033cbd2c344fbabe57ac060b5dd100/releases/hackvertor-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Hackvertor",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "8b4fe2571ec54983b6d6c21fbfe17cb2",
+          "errors": "ui",
+          "extension_file": "bapps/8b4fe2571ec54983b6d6c21fbfe17cb2/HeadersAnalyzer.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "Headers Analyzer",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "d405150b57e54887b1dcfa563b7c0b6f",
+          "errors": "ui",
+          "extension_file": "bapps/d405150b57e54887b1dcfa563b7c0b6f/build/libs/heartbleed-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "HeartBleed",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "ad5f51b515d14490ae8842ce61f60df5",
+          "errors": "ui",
+          "extension_file": "bapps/ad5f51b515d14490ae8842ce61f60df5/current_epoch_time.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "Intruder Time Payloads",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 6,
+          "bapp_uuid": "7ec6d429fed04cdcb6243d8ba7358880",
+          "errors": "ui",
+          "extension_file": "bapps/7ec6d429fed04cdcb6243d8ba7358880/target/J2EEScan-1.2.6-jar-with-dependencies.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "J2EEScan",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 4,
+          "bapp_uuid": "c0d90a42c99848588d3df017cca717b5",
+          "errors": "ui",
+          "extension_file": "bapps/c0d90a42c99848588d3df017cca717b5/build/libs/burp-jq-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "JQ",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "0e61c786db0c4ac787a08c4516d52ccf",
+          "errors": "ui",
+          "extension_file": "bapps/0e61c786db0c4ac787a08c4516d52ccf/FransLinkfinder.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "JS Link Finder",
+          "output": "ui"
+        },
+        {
+          "errors": "ui",
+          "extension_file": "/opt/JSBeautifier/jsbeautifier.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "JSBeautifier",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "ceed5b1568ba4b92abecce0dff1e1f2c",
+          "errors": "ui",
+          "extension_file": "bapps/ceed5b1568ba4b92abecce0dff1e1f2c/JSONDecoder.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "JSON Decoder",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "787fbb3cd3fe40729820a88dd4fa877c",
+          "errors": "ui",
+          "extension_file": "bapps/787fbb3cd3fe40729820a88dd4fa877c/target/burp-suite-jsonpath-1.0-SNAPSHOT.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "JSON Query",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 5,
+          "bapp_uuid": "82d6c60490b540369d6d5d01822bdf61",
+          "errors": "ui",
+          "extension_file": "bapps/82d6c60490b540369d6d5d01822bdf61/target/JOSEPH-1.0.2.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "JSON Web Token Attacker",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 26,
+          "bapp_uuid": "f923cbf91698420890354c1d8958fee6",
+          "errors": "ui",
+          "extension_file": "bapps/f923cbf91698420890354c1d8958fee6/target/JWT4B-jar-with-dependencies.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "JSON Web Tokens",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 16,
+          "bapp_uuid": "228336544ebe4e68824b5146dbbd93ae",
+          "errors": "ui",
+          "extension_file": "bapps/228336544ebe4e68824b5146dbbd93ae/target/JavaDeserializationScanner-0.7-jar-with-dependencies.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Java Deserialization Scanner",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 3,
+          "bapp_uuid": "afd8c03376f3461b804f39efae38f222",
+          "errors": "ui",
+          "extension_file": "bapps/afd8c03376f3461b804f39efae38f222/target/javaserialkiller-1.0-SNAPSHOT-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Java Serial Killer",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "bc737909a5d742eab91544705c14d34f",
+          "errors": "ui",
+          "extension_file": "bapps/bc737909a5d742eab91544705c14d34f/ysoserial/target/ysoserial-0.0.2-SNAPSHOT-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Java Serialized Payloads",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "186be35f6e0d418eb1f6ecf1cc66a74d",
+          "errors": "ui",
+          "extension_file": "bapps/186be35f6e0d418eb1f6ecf1cc66a74d/build/libs/log4shell-everywhere-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Log4Shell Everywhere",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 7,
+          "bapp_uuid": "b011be53649346dd87276bca41ce8e8f",
+          "errors": "ui",
+          "extension_file": "bapps/b011be53649346dd87276bca41ce8e8f/build/libs/log4shell-scanner.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Log4Shell Scanner",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "47319d00cae2447e8319db423913e19c",
+          "errors": "ui",
+          "extension_file": "bapps/47319d00cae2447e8319db423913e19c/target/Burplay.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Multi Session Replay",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "605a859f0a814f0cbbdce92bc64233b4",
+          "errors": "ui",
+          "extension_file": "bapps/605a859f0a814f0cbbdce92bc64233b4/build/libs/nosqli-scanner-all-1.0.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "NoSQLi Scanner",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "12e84399d46a408dbe970f181391f781",
+          "errors": "ui",
+          "extension_file": "bapps/12e84399d46a408dbe970f181391f781/NonHTTPProxy/target/NonHTTPProxy-0.0.1-SNAPSHOT-jar-with-dependencies.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Non HTTP Proxy (NoPE)",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 9,
+          "bapp_uuid": "8ef2db1173e8432c8797831c2e730727",
+          "errors": "ui",
+          "extension_file": "bapps/8ef2db1173e8432c8797831c2e730727/build/libs/OAUTHscan-all-1.1.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "OAUTH Scan",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "657539deacea4d15abd6cecd9c5721c6",
+          "errors": "ui",
+          "extension_file": "bapps/657539deacea4d15abd6cecd9c5721c6/OAuth2TokenGrabber.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "OAuth2 Token Grabber",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 25,
+          "bapp_uuid": "6bf7574b632847faaaa4eb5e42f1757c",
+          "errors": "ui",
+          "extension_file": "bapps/6bf7574b632847faaaa4eb5e42f1757c/build/libs/openapi-parser-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "OpenAPI Parser",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 4,
+          "bapp_uuid": "24dab228311049d89a27a4d721e17ef7",
+          "errors": "ui",
+          "extension_file": "bapps/24dab228311049d89a27a4d721e17ef7/build/libs/php-object-injection-check-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "PHP Object Injection Check",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 4,
+          "bapp_uuid": "631785c4cb4147feb5fdbf272f80f30c",
+          "errors": "ui",
+          "extension_file": "bapps/631785c4cb4147feb5fdbf272f80f30c/build/libs/poi-slinger-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "PHP Object Injection Slinger",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 26,
+          "bapp_uuid": "17d2949a985c4b7ca092728dba871943",
+          "errors": "ui",
+          "extension_file": "bapps/17d2949a985c4b7ca092728dba871943/build/libs/param-miner-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Param Miner",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 8,
+          "bapp_uuid": "0ac13c45adff4e31a3ca8dc76dd6286c",
+          "errors": "ui",
+          "extension_file": "bapps/0ac13c45adff4e31a3ca8dc76dd6286c/build/libs/paramalyzer-all.jar",
+          "extension_type": "java",
+          "loaded": true,
+          "name": "Paramalyzer",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "8e8f6bb313db46ba9e0a7539d3726651",
+          "errors": "ui",
+          "extension_file": "bapps/8e8f6bb313db46ba9e0a7539d3726651/reflected_parameters_monitor.jar",
+          "extension_type": "java",
+          "loaded": true,
+          "name": "Reflected Parameters",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 9,
+          "bapp_uuid": "cc16f37549ff416b990d4312490f5fd1",
+          "errors": "ui",
+          "extension_file": "bapps/cc16f37549ff416b990d4312490f5fd1/minimizer.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "Request Minimizer",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 11,
+          "bapp_uuid": "e63f09f290ad4d9ea20031e84767b303",
+          "errors": "ui",
+          "extension_file": "bapps/e63f09f290ad4d9ea20031e84767b303/build/libs/ResponseOverview-1.4.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Response Overview",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 13,
+          "bapp_uuid": "36238b534a78494db9bf2d03f112265c",
+          "errors": "ui",
+          "extension_file": "bapps/36238b534a78494db9bf2d03f112265c/retirejs-burp-plugin/target/burp-retire-js-3.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Retire.js",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "32c38cd10ef44c1cbca9d54483f78e88",
+          "errors": "ui",
+          "extension_file": "bapps/32c38cd10ef44c1cbca9d54483f78e88/burp_saml.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "SAML Editor",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "9ff11c976383491b976389ce23091ee3",
+          "errors": "ui",
+          "extension_file": "bapps/9ff11c976383491b976389ce23091ee3/burp_saml.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "SAML Encoder / Decoder",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 15,
+          "bapp_uuid": "c61cfa893bb14db4b01775554f7b802e",
+          "errors": "ui",
+          "extension_file": "bapps/c61cfa893bb14db4b01775554f7b802e/target/saml-raider-1.4.1-jar-with-dependencies.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "SAML Raider",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "ec94f32a5b1f467bbb1459398818156f",
+          "errors": "ui",
+          "extension_file": "bapps/ec94f32a5b1f467bbb1459398818156f/build/libs/saml-re-quest-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "SAMLReQuest",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "e616dc27bf7a4c6598cfeeb70d5ca81c",
+          "errors": "ui",
+          "extension_file": "bapps/e616dc27bf7a4c6598cfeeb70d5ca81c/build/libs/SqlmapDnsCollaborator-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "SQLMap DNS Collaborator",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 22,
+          "bapp_uuid": "f154175126a04bfe8edc6056f340f52e",
+          "errors": "ui",
+          "extension_file": "bapps/f154175126a04bfe8edc6056f340f52e/SQLiPy.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "SQLiPy Sqlmap Integration",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "2e3a9895bb9b41f8b8a1193ec0399d3d",
+          "errors": "ui",
+          "extension_file": "bapps/2e3a9895bb9b41f8b8a1193ec0399d3d/sri-check.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "SRI Check",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "9fea3ce4e79d450a9a15d05a79f9d349",
+          "errors": "ui",
+          "extension_file": "bapps/9fea3ce4e79d450a9a15d05a79f9d349/target/sometime-0.0.1-SNAPSHOT-jar-with-dependencies.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Same Origin Method Execution",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "ea1aa264b86d424ba35760d7e24c9e60",
+          "errors": "ui",
+          "extension_file": "bapps/ea1aa264b86d424ba35760d7e24c9e60/build/libs/SameSiteReporter-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "SameSite Reporter",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 3,
+          "bapp_uuid": "25cf44e09aaf4acc9b5f49373c90199a",
+          "errors": "ui",
+          "extension_file": "bapps/25cf44e09aaf4acc9b5f49373c90199a/build/libs/SANScanner.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "San Scanner",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "ca7ee4e746b54514a0ca5059329e926f",
+          "errors": "ui",
+          "extension_file": "bapps/ca7ee4e746b54514a0ca5059329e926f/build/libs/scan-manual-insertion-point-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Scan manual insertion point",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 4,
+          "bapp_uuid": "c1d4bd60626d4178a54d36ee802cf7e8",
+          "errors": "ui",
+          "extension_file": "bapps/c1d4bd60626d4178a54d36ee802cf7e8/build/libs/server-side-prototype-pollution-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Server-Side Prototype Pollution Scanner",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 3,
+          "bapp_uuid": "9cbdeea2d3744e5ab0f2d08632438985",
+          "errors": "ui",
+          "extension_file": "bapps/9cbdeea2d3744e5ab0f2d08632438985/Burp-SessionAuthTool.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "Session Auth",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "c4bfd29882974712a1d69c6d8f05874e",
+          "errors": "ui",
+          "extension_file": "bapps/c4bfd29882974712a1d69c6d8f05874e/session_timeout_test.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Session Timeout Test",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "93bbecc3da434ef7ba5a5b2b98265169",
+          "errors": "ui",
+          "extension_file": "bapps/93bbecc3da434ef7ba5a5b2b98265169/getResponse.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "Site Map Fetcher",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 15,
+          "bapp_uuid": "ae62baff8fa24150991bad5eaf6d4d38",
+          "errors": "ui",
+          "extension_file": "bapps/ae62baff8fa24150991bad5eaf6d4d38/target/burp-suite-software-version-checks-1.0.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Software Version Reporter",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 7,
+          "bapp_uuid": "c9fb79369b56407792a7104e3c4352fb",
+          "errors": "ui",
+          "extension_file": "bapps/c9fb79369b56407792a7104e3c4352fb/target/burp-vulners-scanner-1.2.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Software Vulnerability Scanner",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "3eb7806c0aef4d4b8b12225bf76949d8",
+          "errors": "ui",
+          "extension_file": "bapps/3eb7806c0aef4d4b8b12225bf76949d8/dist/TimestampEditor_v1.0.0.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Timestamp Editor",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 5,
+          "bapp_uuid": "f24211fa6fcd4bbea6b21f99c5cad27a",
+          "errors": "ui",
+          "extension_file": "bapps/f24211fa6fcd4bbea6b21f99c5cad27a/build/libs/token-extractor-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Token Extractor",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "ae166662024149f981bb6920cf3c8960",
+          "errors": "ui",
+          "extension_file": "bapps/ae166662024149f981bb6920cf3c8960/build/libs/token-incrementor-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Token Incrementor",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 1,
+          "bapp_uuid": "65f32f209a72480ea5f1a0dac4f38248",
+          "errors": "ui",
+          "extension_file": "bapps/65f32f209a72480ea5f1a0dac4f38248/burp-uuid.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "UUID Detector",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 12,
+          "bapp_uuid": "b2244cbb6953442cb3c82fa0a0d908fa",
+          "errors": "ui",
+          "extension_file": "bapps/b2244cbb6953442cb3c82fa0a0d908fa/UploadScanner.py",
+          "extension_type": "python",
+          "loaded": true,
+          "name": "Upload Scanner",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 3,
+          "bapp_uuid": "ba17d9fb487448b48368c22cb70048dc",
+          "errors": "ui",
+          "extension_file": "bapps/ba17d9fb487448b48368c22cb70048dc/build/libs/viewstate-editor-1.0.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "ViewState Editor",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "1ddd8919e946459f9c1bb47eedb19376",
+          "errors": "ui",
+          "extension_file": "bapps/1ddd8919e946459f9c1bb47eedb19376/build/libs/wcf-deserializer-all.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "WCF Deserializer",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 2,
+          "bapp_uuid": "ef2f3f1a593d417987bb2ddded760aee",
+          "errors": "ui",
+          "extension_file": "bapps/ef2f3f1a593d417987bb2ddded760aee/WSDLWizard.py",
+          "extension_type": "python",
+          "loaded": false,
+          "name": "WSDL Wizard",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 6,
+          "bapp_uuid": "594a49bb233748f2bc80a9eb18a2e08f",
+          "errors": "ui",
+          "extension_file": "bapps/594a49bb233748f2bc80a9eb18a2e08f/wsdler.jar",
+          "extension_type": "java",
+          "loaded": false,
+          "name": "Wsdler",
+          "output": "ui"
+        },
+        {
+          "bapp_serial_version": 3,
+          "bapp_uuid": "eb75d39684b845adb457bcb050d1aa1d",
+          "errors": "ui",
+          "extension_file": "bapps/eb75d39684b845adb457bcb050d1aa1d/releases/xss-cheatsheet-1.0.jar",
+          "extension_type": "java",
+          "loaded": true,
+          "name": "XSS Cheatsheet",
+          "output": "ui"
+        }
+      ]
+    }
+  }
+}
