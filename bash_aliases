@@ -69,6 +69,15 @@ alias sb="sudo bash"
 alias vsl="virsh list --all"
 alias lt='ls -lhaFt --reverse'
 alias topmem='top -1 -o %MEM -c'
+#docker
+alias dols='docker container ls'
+alias doim='docker image ls'
+alias doshow='docker container inspect'
+
+doexec() {
+	docker container exec -it -u root $1 /bin/bash
+}
+
 
 lsten() {
 	if [ -z "$1" ]; then
