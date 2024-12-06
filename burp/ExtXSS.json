@@ -198,7 +198,7 @@
           "errors": "ui",
           "extension_file": "bapps/0a05afd37da44adca514acef1cdde3b9/build/libs/decoder-improved-all.jar",
           "extension_type": "java",
-          "loaded": false,
+          "loaded": true,
           "name": "Decoder Improved",
           "output": "ui"
         },
@@ -258,7 +258,7 @@
           "errors": "ui",
           "extension_file": "bapps/858352a27e6e4a6caa802e61fdeb7dd4/target/BurpExifToolScanner-1.0.9.jar",
           "extension_type": "java",
-          "loaded": false,
+          "loaded": true,
           "name": "ExifTool Scanner",
           "output": "ui"
         },
@@ -368,7 +368,7 @@
           "errors": "ui",
           "extension_file": "bapps/ad5f51b515d14490ae8842ce61f60df5/current_epoch_time.py",
           "extension_type": "python",
-          "loaded": false,
+          "loaded": true,
           "name": "Intruder Time Payloads",
           "output": "ui"
         },
@@ -616,7 +616,7 @@
           "errors": "ui",
           "extension_file": "bapps/cc16f37549ff416b990d4312490f5fd1/minimizer.py",
           "extension_type": "python",
-          "loaded": false,
+          "loaded": true,
           "name": "Request Minimizer",
           "output": "ui"
         },
@@ -796,7 +796,7 @@
           "errors": "ui",
           "extension_file": "bapps/ae62baff8fa24150991bad5eaf6d4d38/target/burp-suite-software-version-checks-1.0.jar",
           "extension_type": "java",
-          "loaded": false,
+          "loaded": true,
           "name": "Software Version Reporter",
           "output": "ui"
         },
