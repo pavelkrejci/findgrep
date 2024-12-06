@@ -73,7 +73,7 @@ alias topmem='top -1 -o %MEM -c'
 alias dols='docker container ls'
 alias doim='docker image ls'
 alias doshow='docker container inspect'
-
+alias dostats='docker container stats'
 doexec() {
 	docker container exec -it -u root $1 /bin/bash
 }
