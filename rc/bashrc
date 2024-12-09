@@ -114,8 +114,8 @@ fi
 if [ -d "$HOME/bin" ] ; then
     export PATH="$HOME/bin:$PATH"
 fi
-if [ -d "$HOME/bin/pen" ] ; then
-    export PATH="$HOME/bin/pen:$PATH"
+if [ -d "$HOME/pentest" ] ; then
+    export PATH="$HOME/pentest:$PATH"
 fi
 if [ -d "$HOME/bin/ubuntu" ] ; then
     export PATH="$HOME/bin/ubuntu:$PATH"
