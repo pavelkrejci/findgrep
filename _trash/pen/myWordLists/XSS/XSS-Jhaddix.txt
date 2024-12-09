@@ -1,1 +1,0 @@
-/home/atos/SecLists/Fuzzing/XSS/robot-friendly/XSS-Jhaddix.txt

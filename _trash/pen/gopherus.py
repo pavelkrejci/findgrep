@@ -1,1 +1,0 @@
-/home/atos/Gopherus/gopherus.py

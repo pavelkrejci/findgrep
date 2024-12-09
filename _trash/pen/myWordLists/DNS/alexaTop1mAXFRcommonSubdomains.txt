@@ -1,1 +1,0 @@
-/home/atos/fuzzdb/discovery/dns/alexaTop1mAXFRcommonSubdomains.txt

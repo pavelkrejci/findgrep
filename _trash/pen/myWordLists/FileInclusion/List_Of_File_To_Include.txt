@@ -1,1 +1,0 @@
-/home/atos/PayloadsAllTheThings/File Inclusion/Intruders/List_Of_File_To_Include.txt

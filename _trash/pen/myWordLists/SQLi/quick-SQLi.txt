@@ -1,1 +1,0 @@
-/home/atos/SecLists/Fuzzing/SQLi/quick-SQLi.txt

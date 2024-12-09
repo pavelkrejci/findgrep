@@ -1,1 +1,0 @@
-/home/atos/PayloadsAllTheThings/Directory Traversal/Intruder/dotdotpwn.txt

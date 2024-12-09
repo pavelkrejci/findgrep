@@ -1,7 +1,0 @@
-#basic command list, to be processed for the purpose of Burp Intruder like this:
-#mybase64CI.sh -f commandInjBash.txt > vystup.txt
-echo BRZO$((111+222))$(echo POZDE)HNED
-whoami
-id
-ls
-uname -a

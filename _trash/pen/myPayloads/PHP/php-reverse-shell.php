@@ -1,1 +1,0 @@
-/home/atos/SecLists/Web-Shells/laudanum-1.0/php/php-reverse-shell.php

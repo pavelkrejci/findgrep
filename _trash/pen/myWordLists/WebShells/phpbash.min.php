@@ -1,1 +1,0 @@
-/home/atos/phpbash/phpbash.min.php

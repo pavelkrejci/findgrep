@@ -1,1 +1,0 @@
-/home/atos/HAR2Sqlmap/har2sqlmap.py
