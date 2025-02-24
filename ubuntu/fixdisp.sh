@@ -7,6 +7,6 @@ set -x
 sleep 1
 
 /usr/bin/xrandr --output Virtual-1 --mode "1920x1200"
-/usr/bin/xrandr --output Virtual-2 --mode "2560x1440"
-xrandr --output Virtual-1 --primary --output Virtual-2 --right-of Virtual-1
+/usr/bin/xrandr --output Virtual-2 --mode "1440x2560"
+xrandr --output Virtual-1 --primary --output Virtual-2 --left-of Virtual-1
 
