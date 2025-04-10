@@ -14,7 +14,7 @@ usage() {
 
 
 MODE=""
-DEFPYENV=~/LLM1_env
+DEFPYENV=.venv
 
 while getopts "ce" opt; do
 	case "$opt" in
