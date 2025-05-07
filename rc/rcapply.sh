@@ -17,6 +17,8 @@ PUBLIC_KEY="$1"
 USERNAME="$2"
 TARGET_HOME=$(getent passwd "$USERNAME" | cut -d: -f6)
 
+echo "Setting up for the user: \"$USERNAME\", home dir: \"$TARGET_HOME\""
+
 # Verify home directory exists
 if [ ! -d "$TARGET_HOME" ]; then
     echo "Error: Home directory $TARGET_HOME for user $USERNAME does not exist"
@@ -29,6 +31,13 @@ if ! id "$USERNAME" >/dev/null 2>&1; then
     exit 1
 fi
 
+# Verify config files exists
+if ! [ -f bashrc -a -f vimrc -a -f screenrc -a -f bash_aliases ]; then
+    echo "Error: Config files not found in current directory: `pwd`"
+    exit 1
+fi
+exit 0
+
 # Setup SSH directory and keys
 mkdir -p "$TARGET_HOME/.ssh"
 chmod 700 "$TARGET_HOME/.ssh"
@@ -37,9 +46,9 @@ chmod 600 "$TARGET_HOME/.ssh/authorized_keys"
 chown -R "$USERNAME:$USERNAME" "$TARGET_HOME/.ssh"
 
 # Copy RC files
-cp ~/bin/rc/vimrc "$TARGET_HOME/.vimrc"
-cp ~/bin/rc/screenrc "$TARGET_HOME/.screenrc"
-cp ~/bin/rc/bash_aliases "$TARGET_HOME/.bash_aliases"
+cp vimrc "$TARGET_HOME/.vimrc"
+cp screenrc "$TARGET_HOME/.screenrc"
+cp bash_aliases "$TARGET_HOME/.bash_aliases"
 
 # Set RC files ownership
 chown "$USERNAME:$USERNAME" "$TARGET_HOME/.vimrc"
@@ -54,9 +63,9 @@ fi
 
 # Install appropriate bashrc
 if [ "$USERNAME" == "root" ]; then
-    cp ~/bin/rc/bashrc.root "$TARGET_HOME/.bashrc"
+    cp bashrc.root "$TARGET_HOME/.bashrc"
 else
-    cp ~/bin/rc/bashrc "$TARGET_HOME/.bashrc"
+    cp bashrc "$TARGET_HOME/.bashrc"
 fi
 chown "$USERNAME:$USERNAME" "$TARGET_HOME/.bashrc"
 
