@@ -36,7 +36,6 @@ if ! [ -f bashrc -a -f vimrc -a -f screenrc -a -f bash_aliases ]; then
     echo "Error: Config files not found in current directory: `pwd`"
     exit 1
 fi
-exit 0
 
 # Setup SSH directory and keys
 mkdir -p "$TARGET_HOME/.ssh"
