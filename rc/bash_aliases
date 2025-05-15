@@ -71,7 +71,8 @@ alias aptli="apt list --installed"
 alias sb="sudo bash"
 alias vsl="virsh list --all"
 alias lt='ls -lhaFt --reverse'
-alias topmem='top -1 -o %MEM -c'
+alias topmem='top -1 -o %MEM -e m -c'
+alias htopmem='htop -s PERCENT_MEM -d 10'
 #docker
 alias dols='docker ps'
 alias doim='docker image ls'
