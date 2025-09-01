@@ -22,5 +22,7 @@ timestamp=$(date '+%Y-%m-%d %H:%M:%S')
 if [ "$current_ip" != "$previous_ip" ]; then
     echo "$timestamp - New IP: $current_ip (Previous: $previous_ip)" >> "$IP_HISTORY"
     echo "$current_ip" > "$IP_FILE"
+else
+	touch "$IP_FILE" "$IP_HISTORY"
 fi
 

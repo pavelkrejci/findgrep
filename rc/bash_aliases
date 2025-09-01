@@ -95,6 +95,10 @@ doexec() {
 	[ -z "$2" ] && docker container exec -it -u root $1 /bin/bash || docker container exec -it -u $1 $2 /bin/bash
 }
 
+dorun() {
+	docker run -it -u root $1 /bin/bash
+}
+
 
 lsten() {
 	if [ -z "$1" ]; then
