@@ -102,9 +102,9 @@ dorun() {
 
 lsten() {
 	if [ -z "$1" ]; then
-		/usr/bin/sudo /usr/bin/lsof -nP -sTCP:LISTEN -iTCP
+		/usr/bin/sudo /usr/bin/lsof -nP -sTCP:LISTEN -iTCP; /usr/bin/sudo /usr/bin/lsof -nP -iUDP
 	else
-		/usr/bin/sudo /usr/bin/lsof -nP -sTCP:LISTEN -iTCP:$1
+		/usr/bin/sudo /usr/bin/lsof -nP -sTCP:LISTEN -iTCP:$1; /usr/bin/sudo /usr/bin/lsof -nP -iUDP:$1 
 	fi
 }
 
