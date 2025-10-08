@@ -27,5 +27,12 @@ sudo cp "$CERT_FILE" /usr/local/share/ca-certificates/
 echo "Updating system certificate store..."
 sudo update-ca-certificates
 
+echo "Install certificate into NSSDB for the Chrome browser ..."
+NAME=`openssl x509 -in $CERT_FILE -noout -subject | sed -n 's/.*CN *= *//p'`
+set -x
+certutil -d sql:$HOME/.pki/nssdb -A -t "C,," -n "$NAME" -i $CERT_FILE
+set +x
+certutil -d sql:$HOME/.pki/nssdb -L
+
 echo "✅ Certificate installed. Restart your browser to apply."
 
