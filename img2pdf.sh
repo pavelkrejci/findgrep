@@ -19,7 +19,7 @@ if [ $# -lt 1 ]; then
 fi
 
 # Convert images to a single PDF
-convert "$@" "$output"
+convert -resample 300 "$@" "$output"
 
 echo "Created PDF: $output"
 
