@@ -3,9 +3,9 @@
 #stores first arugment (secret) into shared memory temporary file and spawns the second argument with this file
 #then deletes the file in background and dies, in order to hide the secret from proc list and file system
 
-#debugging
-set -x
-exec &>>/tmp/`basename $0`.log
+#debugging, security hole !!!
+#set -x
+#exec &>>/tmp/`basename $0`.log
 
 # Check if at least 2 arguments are provided
 if [ "$#" -le 1 ]; then
