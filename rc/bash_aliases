@@ -82,6 +82,13 @@ alias dostart='docker container start -i'
 alias grep='grep --color'
 alias zenc='7z a -p -mhe=on'
 alias sgptshell='sgpt --repl temp --shell'
+#pigz replacement for gzip
+if command -v pigz >/dev/null 2>&1; then
+    export GZIP_PROGRAM=pigz
+fi
+if command -v unpigz >/dev/null 2>&1; then
+    export TAR_OPTIONS="--use-compress-program=unpigz"
+fi
 
 pg() {
 	if [ -z "$1" ]; then
