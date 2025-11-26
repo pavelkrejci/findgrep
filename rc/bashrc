@@ -120,3 +120,7 @@ fi
 if [ -d "$HOME/bin/ubuntu" ] ; then
     export PATH="$HOME/bin/ubuntu:$PATH"
 fi
+if [ -d "$HOME/.local/bin" ] ; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
