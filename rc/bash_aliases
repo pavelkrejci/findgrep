@@ -75,7 +75,7 @@ alias topmem='top -1 -o %MEM -e m -c'
 alias htopmem='htop -s PERCENT_MEM -d 10'
 #docker
 alias dols='docker ps'
-alias doim='docker image ls'
+alias doim='docker image ls --digests --all'
 alias doshow='docker container inspect'
 alias dostats='docker container stats'
 alias dostart='docker container start -i'
