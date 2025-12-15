@@ -3,6 +3,8 @@
 #scrolling by mouse is not possible within screen even with this enabled
 #but use Ctrl+a, [ and then you can scroll with mouse wheel or Shift+PgUp
 #mousetrack on
-defscrollback 50000
+defscrollback 100000
 startup_message off
 deflogin off
+bind Z eval "scrollback 0" "scrollback 100000"
+
